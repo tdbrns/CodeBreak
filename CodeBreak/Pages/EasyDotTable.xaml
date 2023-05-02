@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This page is stand-in for the actual game -->
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeBreak.Pages.EasyDotTable"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+
+            <GradientStop Color="Black" Offset="0.01" />
+            <GradientStop Color="DarkSlateBlue" Offset="0.4" />
+            <GradientStop Color="MidnightBlue" Offset="0.8" />
+
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <VerticalStackLayout>
+        <Grid RowDefinitions="100,100,120" Margin="80,50,0,0" RowSpacing="10">
+
+            <Label
+            x:Name="lblPlayer"
+            Grid.Row="0"
+            FontSize="40"
+            HorizontalOptions="Start"/>
+
+            <Label
+            x:Name="lblDifficulty"
+            Grid.Row="1"
+            FontSize="40"
+            HorizontalTextAlignment="Start"
+            HorizontalOptions="Start"/>
+
+            <HorizontalStackLayout Grid.Row="2" Spacing="10" HorizontalOptions="Start" Margin="0,50,0,0">
+
+                <Stepper
+                x:Name="stprScoreCount"
+                Minimum="0" Increment="1"
+                Scale="1.2"
+                ValueChanged="IncrementScore"/>
+                <Label
+                Text="Score:"
+                FontSize="40"/>
+                <Label
+                x:Name="lblScore"
+                FontSize="40"/>
+
+            </HorizontalStackLayout>
+
+        </Grid>
+
+        <Button
+            Text="Main Menu"
+            FontFamily="Abduction2002" FontSize="30"
+            WidthRequest="250" HeightRequest="60"
+            Clicked="ReturnToMainMenu">
+
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
+            </Button.Shadow>
+
+        </Button>
+
+    </VerticalStackLayout>
+
+
+</ContentPage>

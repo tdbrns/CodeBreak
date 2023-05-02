@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeBreak.MainPage"
+             BackgroundImageSource="retroray.gif"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="#FFD700"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+    
+    
+    <ScrollView>
+        <VerticalStackLayout Padding="30,0" Spacing="10">
+            <!-- Margin="left, top, right, bottom"-->
+            <Label
+                x:Name="lblCode"
+                Text="CODE BREAK" TextColor="#FFD700"
+                BackgroundColor="MidnightBlue"
+                FontFamily="Abduction2002" FontSize="120"
+                Margin="0,200,0,0" Padding="1"
+                HorizontalOptions="Center"/>
+
+            <Button
+                x:Name="btnNewGame"
+                Text="New Game"
+                BackgroundColor="MidnightBlue"
+                FontFamily="Abduction2002" FontSize="25"
+                WidthRequest="200" HeightRequest="56"
+                VerticalOptions="End" HorizontalOptions="Center"
+                Clicked="NewGame"/>
+
+            <Button
+                x:Name="btnLeaderboards"
+                Text="Leaderboards"
+                BackgroundColor="MidnightBlue"
+                FontFamily="Abduction2002" FontSize="25"
+                WidthRequest="250" HeightRequest="56"
+                VerticalOptions="End" HorizontalOptions="Center"
+                Clicked="ShowLeaderboards"/>
+
+            <Button
+                x:Name="btnQuit"
+                Text="Quit"
+                BackgroundColor="MidnightBlue"
+                FontFamily="Abduction2002" FontSize="25"
+                WidthRequest="120" HeightRequest="56"
+                VerticalOptions="End" HorizontalOptions="Center"
+                Clicked="QuitGame">
+
+            </Button>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeBreak.Pages.DifficultySelection"
+             NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+
+            <GradientStop Color="MidnightBlue" Offset="0.1" />
+            <GradientStop Color="Black" Offset="1.0" />
+
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <!-- Attempt to change the color of a radio button to yellow when it is checked -->
+    <!--<ContentPage.Resources>
+        <Style TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="Yellow"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor" Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>-->
+    
+    <VerticalStackLayout Padding="30" Spacing="20">
+
+        <Label
+            Text="Select Difficulty"
+            FontFamily="Abduction2002" FontSize="60"
+            HorizontalOptions="Center">
+
+            <Label.Shadow>
+                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
+            </Label.Shadow>
+
+        </Label>
+
+        <Grid RowDefinitions="60,60,60,60" HorizontalOptions="Center" RowSpacing="10">
+
+            <RadioButton
+                x:Name="rdoEasy"
+                Grid.Row="0"
+                FontSize="40" FontFamily="Abduction2002"
+                Content="Easy"
+                
+                HorizontalOptions="Start">
+
+                <RadioButton.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
+                </RadioButton.Shadow>
+
+            </RadioButton>
+
+            <RadioButton
+                x:Name="rdoNormal"
+                Grid.Row="1"
+                FontSize="40" FontFamily="Abduction2002"
+                Content="Normal"
+                HorizontalOptions="Start">
+
+                <RadioButton.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
+                </RadioButton.Shadow>
+
+            </RadioButton>
+
+            <RadioButton
+                x:Name="rdoHard"
+                Grid.Row="2"
+                FontSize="40" FontFamily="Abduction2002"
+                Content="Hard"
+                HorizontalOptions="Start">
+
+                <RadioButton.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
+                </RadioButton.Shadow>
+
+            </RadioButton>
+
+            <RadioButton
+                x:Name="rdoImpossible"
+                Grid.Row="3"
+                FontSize="40" FontFamily="Abduction2002"
+                Content="Impossible"
+                HorizontalOptions="Start">
+
+                <RadioButton.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
+                </RadioButton.Shadow>
+
+            </RadioButton>
+
+        </Grid>
+
+        <Button
+            Text="Start"
+            FontFamily="Abduction2002" FontSize="30"
+            WidthRequest="200"
+            VerticalOptions="Center"
+            Margin="0,20,0,0"
+            Clicked="StartGame">
+
+            <Button.Shadow>
+                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
+            </Button.Shadow>
+
+        </Button>
+
+    </VerticalStackLayout>
+
+</ContentPage>
