@@ -54,8 +54,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Pages\EasyDotTable.xaml.cs">
-	    <DependentUpon>EasyDotTable.xaml</DependentUpon>
+	  <Compile Update="Pages\EasyGame.xaml.cs">
+	    <DependentUpon>EasyGame.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -63,19 +63,28 @@
 	  <MauiXaml Update="Pages\DifficultySelection.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\EasyDotTable.xaml">
+	  <MauiXaml Update="Pages\EasyGame.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\EasyLeaderboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\HardGame.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\HardLeaderboard.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\ImpossibleGame.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\ImpossibleLeaderboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\NameEntry.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\NormalGame.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\NormalLeaderboard.xaml">

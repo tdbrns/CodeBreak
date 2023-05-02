@@ -10,14 +10,25 @@ public partial class DifficultySelection : ContentPage
     public async void StartGame(object sender, EventArgs e)
     {
         if (rdoEasy.IsChecked == true)
-            rdoEasy.TextColor = Color.Parse("White");
+        {
+            App.CurrentDifficulty = "Easy";
+            await Navigation.PushAsync(new EasyGame());
+        }
         else if (rdoNormal.IsChecked == true)
+        {
             App.CurrentDifficulty = "Normal";
+            await Navigation.PushAsync(new NormalGame());
+        }
         else if (rdoHard.IsChecked == true)
+        {
             App.CurrentDifficulty = "Hard";
+            await Navigation.PushAsync(new HardGame());
+        }
         else if (rdoImpossible.IsChecked == true)
+        {
             App.CurrentDifficulty = "Impossible";
+            await Navigation.PushAsync(new ImpossibleGame());
+        }
 
-        await Navigation.PushAsync(new EasyDotTable());
     }
 }

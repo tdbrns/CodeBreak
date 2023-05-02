@@ -1,9 +1,9 @@
 namespace CodeBreak.Pages;
 
-public partial class EasyDotTable : ContentPage
+public partial class HardGame : ContentPage
 {
     public DataSaving save = new DataSaving();
-    public EasyDotTable()
+    public HardGame()
     {
         InitializeComponent();
 
@@ -23,27 +23,7 @@ public partial class EasyDotTable : ContentPage
 
     public async void ReturnToMainMenu(object sender, EventArgs e)
     {
-        switch (App.CurrentDifficulty)
-        {
-            case "Easy":
-                save.SaveEasyPlayerData();
-                break;
-
-            case "Normal":
-                save.SaveNormalPlayerData();
-                break;
-
-            case "Hard":
-                save.SaveHardPlayerData();
-                break;
-
-            case "Impossible":
-                save.SaveImpossiblePlayerData();
-                break;
-
-            default:
-                break;
-        }
+        save.SaveHardPlayerData();
 
         save = null;
         await Navigation.PopToRootAsync();
