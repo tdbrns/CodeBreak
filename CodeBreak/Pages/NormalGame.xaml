@@ -41,7 +41,7 @@
             HorizontalOptions="Center"/>
 
         <Grid 
-            x:Name="table" RowDefinitions="100,100,100,100" ColumnDefinitions="100,100,100,100,100" 
+            x:Name="table" RowDefinitions="100,100,100,100,100" ColumnDefinitions="100,100,100,100,100,100" 
             HorizontalOptions="Center" 
             Margin="0,20,0,0" Padding="270,10,300,10"
             BackgroundColor="MidnightBlue" Opacity="1">
