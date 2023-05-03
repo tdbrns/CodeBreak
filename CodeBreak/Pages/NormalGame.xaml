@@ -2,11 +2,257 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CodeBreak.Pages.NormalGame"
-             Title="NormalGame">
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             BackgroundImageSource="retroray.gif">
+
     <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+
+        <HorizontalStackLayout Margin="0,15,0,0" HorizontalOptions="Center">
+            <Grid ColumnDefinitions="*,*,*" ColumnSpacing="100" 
+                  BackgroundColor="MidnightBlue" 
+                  Opacity="0.9" Padding="30,5,30,5">
+
+                <Label
+                    x:Name="lblScore"
+                    Grid.Column="0"
+                    FontSize="30" FontFamily="VCR_OSD_Mono"
+                    WidthRequest="440"
+                    HorizontalOptions="Start" VerticalTextAlignment="Center"/>
+                <Label
+                    x:Name="lblTimer"
+                    Grid.Column="1"
+                    FontSize="55" FontFamily="VCR_OSD_Mono"
+                    HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+                <Label
+                    x:Name="lblTries"
+                    Grid.Column="2"
+                    FontSize="28" FontFamily="VCR_OSD_Mono"
+                    HorizontalOptions="End" VerticalTextAlignment="Center"/>
+
+            </Grid>
+        </HorizontalStackLayout>
+
+        <Line
+            x:Name="headerLine"
+            Stroke="FloralWhite" StrokeThickness="5"
+            X1="0"
+            X2="1050"
+            HorizontalOptions="Center"/>
+
+        <Grid 
+            x:Name="table" RowDefinitions="100,100,100,100" ColumnDefinitions="100,100,100,100,100" 
+            HorizontalOptions="Center" 
+            Margin="0,20,0,0" Padding="270,10,300,10"
+            BackgroundColor="MidnightBlue" Opacity="1">
+
+            <Button
+                x:Name="btn1x1"
+                Grid.Row="0" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x1Clicked"/>
+            <Button
+                x:Name="btn1x2"
+                Grid.Row="0" Grid.Column="1"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x2Clicked"/>
+            <Button
+                x:Name="btn1x3"
+                Grid.Row="0" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x3Clicked"/>
+            <Button
+                x:Name="btn1x4"
+                Grid.Row="0" Grid.Column="3"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x4Clicked"/>
+            <Button
+                x:Name="btn1x5"
+                Grid.Row="0" Grid.Column="4"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x5Clicked"/>
+            <Button
+                x:Name="btn1x6"
+                Grid.Row="0" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn1x6Clicked"/>
+            <Button
+                x:Name="btn2x1"
+                Grid.Row="1" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x1Clicked"/>
+            <Button
+                x:Name="btn2x2"
+                Grid.Row="1" Grid.Column="1"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x2Clicked"/>
+            <Button
+                x:Name="btn2x3"
+                Grid.Row="1" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x3Clicked"/>
+            <Button
+                x:Name="btn2x4"
+                Grid.Row="1" Grid.Column="3"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x4Clicked"/>
+            <Button
+                x:Name="btn2x5"
+                Grid.Row="1" Grid.Column="4"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x5Clicked"/>
+            <Button
+                x:Name="btn2x6"
+                Grid.Row="0" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn2x6Clicked"/>
+            <Button
+                x:Name="btn3x1"
+                Grid.Row="2" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x1Clicked"/>
+            <Button
+                x:Name="btn3x2"
+                Grid.Row="2" Grid.Column="1"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x2Clicked"/>
+            <Button
+                x:Name="btn3x3"
+                Grid.Row="2" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x3Clicked"/>
+            <Button
+                x:Name="btn3x4"
+                Grid.Row="2" Grid.Column="3"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x4Clicked"/>
+            <Button
+                x:Name="btn3x5"
+                Grid.Row="2" Grid.Column="4"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x5Clicked"/>
+            <Button
+                x:Name="btn3x6"
+                Grid.Row="2" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn3x6Clicked"/>
+            <Button
+                x:Name="btn4x1"
+                Grid.Row="3" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x1Clicked"/>
+            <Button
+                x:Name="btn4x2"
+                Grid.Row="3" Grid.Column="1"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x2Clicked"/>
+            <Button
+                x:Name="btn4x3"
+                Grid.Row="3" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x3Clicked"/>
+            <Button
+                x:Name="btn4x4"
+                Grid.Row="3" Grid.Column="3"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x4Clicked"/>
+            <Button
+                x:Name="btn4x5"
+                Grid.Row="3" Grid.Column="4"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x5Clicked"/>
+            <Button
+                x:Name="btn4x6"
+                Grid.Row="2" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn4x6Clicked"/>
+            <Button
+                x:Name="btn5x1"
+                Grid.Row="3" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x1Clicked"/>
+            <Button
+                x:Name="btn5x2"
+                Grid.Row="3" Grid.Column="1"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x2Clicked"/>
+            <Button
+                x:Name="btn5x3"
+                Grid.Row="3" Grid.Column="2"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x3Clicked"/>
+            <Button
+                x:Name="btn5x4"
+                Grid.Row="3" Grid.Column="3"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x4Clicked"/>
+            <Button
+                x:Name="btn5x5"
+                Grid.Row="3" Grid.Column="4"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x5Clicked"/>
+            <Button
+                x:Name="btn5x6"
+                Grid.Row="2" Grid.Column="0"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="75" HeightRequest="75"
+                Clicked="Btn5x6Clicked"/>
+        </Grid>
+
+        <Button
+            x:Name="btnSubmit"
+            Text="Submit" TextColor="White"
+            BackgroundColor="Black"
+            FontFamily="VCR_OSD_Mono" FontSize="25"
+            WidthRequest="450" HeightRequest="80"
+            Clicked="CheckPattern"/>
+
+        <StackLayout x:Name="finalGrid" Spacing="20" Margin="0,100,0,0">
+
+            <Label
+                x:Name="lblFinalScore"
+                FontFamily="Abduction2002" FontSize="90"
+                BackgroundColor="MidnightBlue" Padding="50,0,50,0"
+                HorizontalOptions="Center"/>
+            <Button
+                x:Name="btnMainMenu"
+                Text="Main Menu" TextColor="White"
+                BackgroundColor="MidnightBlue" 
+                FontFamily="Abduction2002" FontSize="30"
+                WidthRequest="250" HeightRequest="80" Margin="0,20,0,0"
+                Clicked="ReturnToMainMenu"/>
+
+        </StackLayout>
+
     </VerticalStackLayout>
+
 </ContentPage>
