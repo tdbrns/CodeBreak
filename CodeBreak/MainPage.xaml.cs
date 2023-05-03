@@ -13,9 +13,6 @@ public partial class MainPage : ContentPage
     // Set up the animation of the Main Menu text
     public void InitializeAnimation1()
     {
-        //btnNewGame.TranslationX = 100;
-        //btnLeaderboards.TranslationX = 100;
-        //btnQuit.TranslationX = 100;
         lblCode.Opacity = 0;
         btnNewGame.Opacity = 0;
         btnLeaderboards.Opacity = 0;

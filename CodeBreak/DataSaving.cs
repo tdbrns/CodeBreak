@@ -1,6 +1,4 @@
-﻿// Author: Thomas Barnes
-
-// The purpose of this class is to store the name, score, and win total into PlayerDatabase.
+﻿// The purpose of this class is to store the name, score, and win total into PlayerDatabase.
 // Each player is assigned a rank according to their score.
 // If the player is a new player, their score is accepted as a high score and their data will be saved into PlayerDatabase as a new record.
 
