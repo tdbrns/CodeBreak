@@ -23,6 +23,8 @@ public partial class EasyGame : ContentPage
     {
         public const int VIEWTIME_DECREMENT = 50;
         public const int MIN_VIEWTIME = 50;
+        public const int NUM_COLUMNS = 5;
+        public const int NUM_ROWS = 4;
     }
 
     public EasyGame()
@@ -105,8 +107,8 @@ public partial class EasyGame : ContentPage
         ErasePattern();
         DisableAllColumns();
 
-        // Initialize each column array to 0.
-        for (int i = 0;  i < 4; i++)
+        // Initialize the rows of each column array to 0.
+        for (int i = 0;  i < Constants.NUM_ROWS; i++)
         {
             _columnArray1[i] = 0;
             _columnArray2[i] = 0;
@@ -117,7 +119,7 @@ public partial class EasyGame : ContentPage
 
         // Generate five random numbers between 1 and 4 that will each represent one index of each column.
         Random rand = new Random();
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Constants.NUM_COLUMNS; i++)
         {
             _correctIndexes[i] = rand.Next(1, 5);
         }
@@ -137,7 +139,8 @@ public partial class EasyGame : ContentPage
         ShowCorrectButtonCol4();
         ShowCorrectButtonCol5();
 
-        // The time at which pattern is shown will be decremented in CheckPattern by the VIEWTIME_DECREMENT constant with each new pattern.
+        // The time during which the correct pattern is shown will be decremented in CheckPattern by the VIEWTIME_DECREMENT
+        // constant with each new pattern.
         await Task.Delay(_viewTimeValue);
 
         ErasePattern();
@@ -153,7 +156,7 @@ public partial class EasyGame : ContentPage
         {
             bool patternIsCorrect = true;
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Constants.NUM_COLUMNS; i++)
             {
                 if (_chosenIndexes[i] != _correctIndexes[i])
                 {
@@ -303,7 +306,7 @@ public partial class EasyGame : ContentPage
     {
         int correctIndex = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
             if (_columnArray1[i] == 1)
             {
@@ -334,7 +337,7 @@ public partial class EasyGame : ContentPage
     {
         int correctIndex = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
             if (_columnArray2[i] == 1)
             {
@@ -365,7 +368,7 @@ public partial class EasyGame : ContentPage
     {
         int correctIndex = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
             if (_columnArray3[i] == 1)
             {
@@ -396,7 +399,7 @@ public partial class EasyGame : ContentPage
     {
         int correctIndex = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
             if (_columnArray4[i] == 1)
             {
@@ -427,7 +430,7 @@ public partial class EasyGame : ContentPage
     {
         int correctIndex = 0;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
             if (_columnArray5[i] == 1)
             {
@@ -497,7 +500,7 @@ public partial class EasyGame : ContentPage
     }
     public void EnableAllColumns()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Constants.NUM_COLUMNS; i++)
             _disabledColumns[i] = false;
 
         btn1x1.IsEnabled = true;
@@ -524,7 +527,7 @@ public partial class EasyGame : ContentPage
 
     public void DisableAllColumns()
     {
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < Constants.NUM_COLUMNS; i++)
             _disabledColumns[i] = true;
 
         btn1x1.IsEnabled = false;
@@ -672,7 +675,7 @@ public partial class EasyGame : ContentPage
         DisableColumn5();
     }
 
-    // The player's final score is saved into PlayerDatabase
+    // The player's final score is saved into PlayerDatabase.
     public async void ReturnToMainMenu(object sender, EventArgs e)
     {
         App.CurrentScore = _gameScore;
