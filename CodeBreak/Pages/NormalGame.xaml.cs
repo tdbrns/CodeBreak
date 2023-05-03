@@ -25,7 +25,7 @@ public partial class NormalGame : ContentPage
     static class Constants
     {
         public const int VIEWTIME_DECREMENT = 50;
-        public const int MIN_VIEWTIME = 30;
+        public const int MIN_VIEWTIME = 50;
         public const int NUM_COLUMNS = 6;
         public const int NUM_ROWS = 5;
     }
@@ -524,7 +524,7 @@ public partial class NormalGame : ContentPage
 
         for (int i = 0; i < Constants.NUM_ROWS; i++)
         {
-            if (_columnArray5[i] == 1)
+            if (_columnArray6[i] == 1)
             {
                 correctIndex = i;
                 break;
@@ -838,31 +838,31 @@ public partial class NormalGame : ContentPage
     {
         _chosenIndexes[5] = 1;
         btn1x6.BackgroundColor = Color.Parse("#FFD700");
-        DisableColumn5();
+        DisableColumn6();
     }
     public void Btn2x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 2;
         btn2x6.BackgroundColor = Color.Parse("#FFD700");
-        DisableColumn5();
+        DisableColumn6();
     }
     public void Btn3x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 3;
         btn3x6.BackgroundColor = Color.Parse("#FFD700");
-        DisableColumn5();
+        DisableColumn6();
     }
     public void Btn4x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 4;
         btn4x6.BackgroundColor = Color.Parse("#FFD700");
-        DisableColumn5();
+        DisableColumn6();
     }
     public void Btn5x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 5;
         btn5x6.BackgroundColor = Color.Parse("#FFD700");
-        DisableColumn5();
+        DisableColumn6();
     }
 
     // The player's final score is saved into PlayerDatabase.
