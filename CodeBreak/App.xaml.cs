@@ -18,7 +18,7 @@ public partial class App : Application
         PlayersTextFilePath = MakePlayersTextFile();
 
         // Use ClearPlayerRecords method if you wish to delete all saved player data before running a new iteration of Pong Madness.
-        ClearPlayerData();
+        //ClearPlayerData();
 
         MainPage = new NavigationPage(new MainPage());
     }
