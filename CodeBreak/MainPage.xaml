@@ -12,12 +12,14 @@
                     <VisualStateGroup x:Name="CommonStates">
                         <VisualState x:Name="Normal">
                             <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="MidnightBlue"/>
                                 <Setter Property="TextColor" Value="White"/>
                             </VisualState.Setters>
                         </VisualState>
                         <VisualState x:Name="PointerOver">
                             <VisualState.Setters>
-                                <Setter Property="TextColor" Value="#FFD700"/>
+                                <Setter Property="BackgroundColor"  Value="White"/>
+                                <Setter Property="TextColor" Value="MidnightBlue"/>
                             </VisualState.Setters>
                         </VisualState>
                     </VisualStateGroup>
@@ -25,7 +27,6 @@
             </Setter>
         </Style>
     </ContentPage.Resources>
-    
     
     <ScrollView>
         <VerticalStackLayout Padding="30,0" Spacing="10">
@@ -41,7 +42,6 @@
             <Button
                 x:Name="btnNewGame"
                 Text="New Game"
-                BackgroundColor="MidnightBlue"
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="200" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
@@ -50,7 +50,6 @@
             <Button
                 x:Name="btnLeaderboards"
                 Text="Leaderboards"
-                BackgroundColor="MidnightBlue"
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="250" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
@@ -59,7 +58,6 @@
             <Button
                 x:Name="btnQuit"
                 Text="Quit"
-                BackgroundColor="MidnightBlue"
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="120" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
