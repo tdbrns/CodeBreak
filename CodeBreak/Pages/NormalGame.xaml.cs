@@ -869,7 +869,7 @@ public partial class NormalGame : ContentPage
     public async void ReturnToMainMenu(object sender, EventArgs e)
     {
         App.CurrentScore = _gameScore;
-        _save.SaveEasyPlayerData();
+        _save.SaveNormalPlayerData();
 
         _save = null;
         await Navigation.PopToRootAsync();
