@@ -81,6 +81,9 @@
 	  <MauiXaml Update="Pages\ImpossibleLeaderboard.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\NameAcknowledgement.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\NameEntry.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
