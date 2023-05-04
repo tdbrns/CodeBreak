@@ -1,17 +1,21 @@
 namespace CodeBreak.Pages;
 
+using Microsoft.Maui.Layouts;
+
 public partial class HardGame : ContentPage
 {
+    
+
     private DataSaving _save = new DataSaving();
-    private readonly int[] _columnArray1 = new int[6];
-    private readonly int[] _columnArray2 = new int[6];
-    private readonly int[] _columnArray3 = new int[6];
-    private readonly int[] _columnArray4 = new int[6];
-    private readonly int[] _columnArray5 = new int[6];
-    private readonly int[] _columnArray6 = new int[6];
-    private readonly int[] _correctIndexes = new int[8];
-    private readonly int[] _chosenIndexes = new int[8];
-    private readonly bool[] _disabledColumns = new bool[8];
+    private readonly int[] _columnArray1 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray2 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray3 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray4 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray5 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray6 = new int[Constants.NUM_ROWS];
+    private readonly int[] _correctIndexes = new int[Constants.NUM_COLUMNS];
+    private readonly int[] _chosenIndexes = new int[Constants.NUM_COLUMNS];
+    private readonly bool[] _disabledColumns = new bool[Constants.NUM_COLUMNS];
     private int _gameScore = 0;
     private int _remainingTries = 3;
     private bool _pauseTimer = false;
@@ -119,7 +123,7 @@ public partial class HardGame : ContentPage
         Random rand = new Random();
         for (int i = 0; i < Constants.NUM_COLUMNS; i++)
         {
-            _correctIndexes[i] = rand.Next(1, 5);
+            _correctIndexes[i] = rand.Next(1, 6);
         }
 
         // The random values will dictate which elements in the column arrays will store a 1.
@@ -137,6 +141,7 @@ public partial class HardGame : ContentPage
         ShowCorrectButtonCol3();
         ShowCorrectButtonCol4();
         ShowCorrectButtonCol5();
+        ShowCorrectButtonCol6();
 
         // The time during which the correct pattern is shown will be decremented in CheckPattern by the VIEWTIME_DECREMENT
         // constant with each new pattern.
@@ -1148,7 +1153,7 @@ public partial class HardGame : ContentPage
     public async void ReturnToMainMenu(object sender, EventArgs e)
     {
         App.CurrentScore = _gameScore;
-        _save.SaveEasyPlayerData();
+        _save.SaveHardPlayerData();
 
         _save = null;
         await Navigation.PopToRootAsync();
