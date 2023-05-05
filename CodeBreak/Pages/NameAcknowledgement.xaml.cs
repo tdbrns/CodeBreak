@@ -7,8 +7,32 @@ public partial class NameAcknowledgement : ContentPage
     public NameAcknowledgement()
     {
         InitializeComponent();
-
+        AcknowledgementAnimation();
         AcknowledgeName();
+    }
+
+    public async void AcknowledgementAnimation()
+    {
+        lblAcknowledgement.Opacity = 0;
+        lblPlayerName.Opacity = 0;
+        btnNext.Opacity = 0;
+        btnNext.IsEnabled = false;
+
+        await Task.Delay(150);
+        await lblAcknowledgement.FadeTo(0.5, 150);
+        await Task.WhenAll<bool>
+            (
+                lblAcknowledgement.FadeTo(1, 150),
+                lblPlayerName.FadeTo(0.5, 150)
+            );
+        await Task.WhenAll<bool>
+            (
+                lblPlayerName.FadeTo(1, 150),
+                btnNext.FadeTo(0.5, 150)
+            );
+        await btnNext.FadeTo(1, 150);
+
+        btnNext.IsEnabled = true;
     }
 
     public void AcknowledgeName()

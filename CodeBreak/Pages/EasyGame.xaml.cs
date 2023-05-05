@@ -6,8 +6,8 @@ public partial class EasyGame : ContentPage
 {
     static class Constants
     {
-        public const int VIEWTIME_DECREMENT = 50;
-        public const int MIN_VIEWTIME = 50;
+        public const int VIEWTIME_DECREMENT = 100;
+        public const int MIN_VIEWTIME = 200;
         public const int NUM_COLUMNS = 5;
         public const int NUM_ROWS = 4;
     }
@@ -22,7 +22,7 @@ public partial class EasyGame : ContentPage
     private readonly int[] _chosenIndexes = new int[Constants.NUM_COLUMNS];
     private readonly bool[] _disabledColumns = new bool[Constants.NUM_COLUMNS];
     private int _gameScore = 0;
-    private int _remainingTries = 3;
+    private int _remainingTries = 1;
     private bool _pauseTimer = false;
     private int _timerValue = 60;
     private int _viewTimeValue = 1000;
@@ -39,7 +39,6 @@ public partial class EasyGame : ContentPage
         lblScore.Text = $"Score: {_gameScore}";
         lblTries.Text = $"Tries: {_remainingTries}";
         lblTimer.Text = "60";
-
 
         HeaderAnimation();
         CreateNewPattern();
@@ -93,7 +92,7 @@ public partial class EasyGame : ContentPage
             _timerValue--;
         }
 
-        if (_timerValue == 0 || _remainingTries == 0)
+        if (_timerValue == 0)
         {
             lblTimer.Text = String.Empty;
             GameOver();
@@ -102,6 +101,9 @@ public partial class EasyGame : ContentPage
 
     public async void CreateNewPattern()
     {
+        btnSubmit.BackgroundColor = Color.Parse("#3B3B3B");
+        btnSubmit.TextColor = Color.Parse("Gray");
+
         // Pause the timer and reset all columns
         _pauseTimer = true;
         ErasePattern();
@@ -192,7 +194,7 @@ public partial class EasyGame : ContentPage
                 TriesAnimation();
                 IncorrectRed();
                 await Task.Delay(1000);
-                CreateNewPattern();
+                GameOver();
             }
         }
     }
@@ -561,120 +563,240 @@ public partial class EasyGame : ContentPage
         _chosenIndexes[0] = 1;
         btn1x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 2;
         btn2x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x1Clicked(Object sender, EventArgs e)
     {
         _chosenIndexes[0] = 3;
         btn3x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 4;
         btn4x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn1x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 1;
         btn1x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 2;
         btn2x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 3;
         btn3x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 4;
         btn4x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn1x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 1;
         btn1x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 2;
         btn2x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 3;
         btn3x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 4;
         btn4x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn1x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 1;
         btn1x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x4Clicked(Object sender, EventArgs e)
     {
         _chosenIndexes[3] = 2;
         btn2x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 3;
         btn3x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 4;
         btn4x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn1x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 1;
         btn1x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 2;
         btn2x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 3;
         btn3x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 4;
         btn4x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
 
     // The player's final score is saved into PlayerDatabase.

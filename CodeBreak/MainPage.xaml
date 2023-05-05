@@ -32,13 +32,12 @@
         <VerticalStackLayout Padding="30,0" Spacing="10">
             <!-- Margin="left, top, right, bottom"-->
             <Label
-                x:Name="lblCode"
+                x:Name="lblCodeBreak"
                 Text="CODE BREAK" TextColor="#FFD700"
                 BackgroundColor="MidnightBlue"
                 FontFamily="Abduction2002" FontSize="120"
                 Margin="0,200,0,0" Padding="1"
                 HorizontalOptions="Center"/>
-
             <Button
                 x:Name="btnNewGame"
                 Text="New Game"
@@ -46,7 +45,6 @@
                 WidthRequest="200" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
                 Clicked="NewGame"/>
-
             <Button
                 x:Name="btnLeaderboards"
                 Text="Leaderboards"
@@ -54,7 +52,13 @@
                 WidthRequest="250" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
                 Clicked="ShowLeaderboards"/>
-
+            <Button
+                x:Name="btnHowToPlay"
+                Text="How To Play"
+                FontFamily="Abduction2002" FontSize="25"
+                WidthRequest="250" HeightRequest="56"
+                VerticalOptions="End" HorizontalOptions="Center"
+                Clicked="ShowHowToPlay"/>
             <Button
                 x:Name="btnQuit"
                 Text="Quit"

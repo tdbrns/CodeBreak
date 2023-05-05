@@ -37,7 +37,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Margin="0,40,0,0">
+    <VerticalStackLayout Margin="0,80,0,0">
 
         <Label
             x:Name="lblAcknowledgement"
