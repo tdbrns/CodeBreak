@@ -6,6 +6,34 @@ public partial class NameEntry : ContentPage
     {
         InitializeComponent();
         lblErrorMsg.IsVisible = false;
+        NameEntryAnimation();
+    }
+
+    public async void NameEntryAnimation()
+    {
+        lblTitle.Opacity = 0;
+        txtPlayerName.Opacity = 0;
+        btnConfirm.Opacity = 0;
+        txtPlayerName.IsEnabled = false;
+        btnConfirm.IsEnabled = false;
+
+        await Task.Delay(150);
+
+        await lblTitle.FadeTo(0.5, 150);
+        await Task.WhenAll<bool>
+            (
+                lblTitle.FadeTo(1, 150),
+                txtPlayerName.FadeTo(0.5, 150)
+            );
+        await Task.WhenAll<bool>
+            (
+                txtPlayerName.FadeTo(1, 150),
+                btnConfirm.FadeTo(0.5, 150)
+            );
+        await btnConfirm.FadeTo(1, 250);
+
+        txtPlayerName.IsEnabled = true;
+        btnConfirm.IsEnabled = true;
     }
 
     public async void ConfirmName(object sender, EventArgs e)

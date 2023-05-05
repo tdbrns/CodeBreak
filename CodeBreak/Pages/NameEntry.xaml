@@ -36,7 +36,7 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Padding="30" Spacing="20">
+    <VerticalStackLayout Padding="30" Spacing="20" Margin="0,50,0,0">
 
         <Label 
             x:Name="lblTitle"
@@ -54,6 +54,7 @@
         <Entry 
             x:Name="txtPlayerName" 
             Placeholder="..." FontSize="25"
+            BackgroundColor="White" TextColor="Black"
             HorizontalTextAlignment="Center" 
             WidthRequest="500"
             MaxLength="22"
