@@ -1,17 +1,15 @@
 // Game logic for a 5x6 table
 
-using Microsoft.Maui.Layouts;
-
 namespace CodeBreak.Pages;
 
 public partial class NormalGame : ContentPage
 {
     static class Constants
     {
-        public const int VIEWTIME_DECREMENT = 100;
-        public const int MIN_VIEWTIME = 200;
-        public const int NUM_COLUMNS = 6;
+        public const int VIEWTIME_DECREMENT = 50;
+        public const int MIN_VIEWTIME = 300;
         public const int NUM_ROWS = 5;
+        public const int NUM_COLUMNS = 6;
     }
 
     private DataSaving _save = new DataSaving();
@@ -28,7 +26,7 @@ public partial class NormalGame : ContentPage
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
     private int _timerValue = 60;
-    private int _viewTimeValue = 1000;
+    private int _viewTimeValue = 1100;
 
     public NormalGame()
     {
@@ -124,12 +122,11 @@ public partial class NormalGame : ContentPage
             _columnArray6[i] = 0;
         }
 
-        // Generate five random numbers between 1 and 5 that will each represent one index of each column.
+        // Generate six random numbers between 1 and 5 that will each represent one index of each column.
         Random rand = new Random();
         for (int i = 0; i < Constants.NUM_COLUMNS; i++)
-        {
             _correctIndexes[i] = rand.Next(1, 6);
-        }
+
 
         // The random values will dictate which elements in the column arrays will store a 1.
         // Every 1 in the column arrays represents a button that is a part of the correct pattern, and every 0 represents a button that is not
@@ -175,8 +172,7 @@ public partial class NormalGame : ContentPage
                 }
             }
 
-            // If the player's pattern is correct, they earn a point, but if it is incorrect, they lose a try. A new pattern will be created
-            // afterwards, regardless of whether or not the player is correct.
+            // If the player's pattern is correct, they earn a point and a new pattern is created, but if it is incorrect, they lose a try.
             if (patternIsCorrect == true)
             {
                 _gameScore += 1;
@@ -688,12 +684,13 @@ public partial class NormalGame : ContentPage
 
     // These ButtonClicked events will assign a value between 1 and 5 to an array (_chosenIndexes) that stores the indexes of the
     // buttons that they chose. _chosenIndexes will be compared to _correctIndexes in the CheckPattern method.
+
+    // Column 1
     public void Btn1x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 1;
         btn1x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -705,7 +702,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[0] = 2;
         btn2x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -728,7 +724,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[0] = 4;
         btn4x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -740,19 +735,19 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[0] = 5;
         btn5x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
             btnSubmit.TextColor = Color.Parse("MidnightBlue");
         }
     }
+
+    // Column 2
     public void Btn1x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 1;
         btn1x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -764,7 +759,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[1] = 2;
         btn2x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -776,7 +770,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[1] = 3;
         btn3x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -788,7 +781,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[1] = 4;
         btn4x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -800,19 +792,19 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[1] = 5;
         btn5x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
             btnSubmit.TextColor = Color.Parse("MidnightBlue");
         }
     }
+
+    // Column 3
     public void Btn1x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 1;
         btn1x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -824,7 +816,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[2] = 2;
         btn2x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -836,7 +827,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[2] = 3;
         btn3x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -848,7 +838,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[2] = 4;
         btn4x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -860,19 +849,19 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[2] = 5;
         btn5x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
             btnSubmit.TextColor = Color.Parse("MidnightBlue");
         }
     }
+
+    // Column 4
     public void Btn1x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 1;
         btn1x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -884,7 +873,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[3] = 2;
         btn2x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -896,7 +884,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[3] = 3;
         btn3x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -908,7 +895,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[3] = 4;
         btn4x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -920,19 +906,19 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[3] = 5;
         btn5x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
             btnSubmit.TextColor = Color.Parse("MidnightBlue");
         }
     }
+
+    // Column 5
     public void Btn1x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 1;
         btn1x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -944,7 +930,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[4] = 2;
         btn2x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -956,7 +941,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[4] = 3;
         btn3x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -968,7 +952,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[4] = 4;
         btn4x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -980,19 +963,19 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[4] = 5;
         btn5x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
             btnSubmit.TextColor = Color.Parse("MidnightBlue");
         }
     }
+
+    // Column 6
     public void Btn1x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 1;
         btn1x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -1004,7 +987,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[5] = 2;
         btn2x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -1016,7 +998,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[5] = 3;
         btn3x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -1028,7 +1009,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[5] = 4;
         btn4x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");
@@ -1040,7 +1020,6 @@ public partial class NormalGame : ContentPage
         _chosenIndexes[5] = 5;
         btn5x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
-
         if (_disabledColumns.Contains(false) == false)
         {
             btnSubmit.BackgroundColor = Color.Parse("White");

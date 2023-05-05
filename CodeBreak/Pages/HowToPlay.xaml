@@ -16,7 +16,8 @@
 
     <ScrollView>
         <StackLayout Margin="200,50,200,0" HorizontalOptions="Center" Spacing="70">
-            <Label 
+            <Label
+                x:Name="lblHowToPlay"
                 Text="How To Play" 
                 FontFamily="Abduction2002" FontSize="90"
                 HorizontalOptions="Center">

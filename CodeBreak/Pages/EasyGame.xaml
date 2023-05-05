@@ -43,9 +43,10 @@
         <Grid 
             x:Name="table" RowDefinitions="100,100,100,100" ColumnDefinitions="100,100,100,100,100" 
             HorizontalOptions="Center" 
-            Margin="0,20,0,0" Padding="270,10,300,10"
+            Margin="0,20,0,0" Padding="300,10,300,10"
             BackgroundColor="MidnightBlue" Opacity="1">
 
+            <!-- Row 1 -->
             <Button
                 x:Name="btn1x1"
                 Grid.Row="0" Grid.Column="0"
@@ -76,6 +77,7 @@
                 BorderColor="White" BorderWidth="3"
                 WidthRequest="75" HeightRequest="75"
                 Clicked="Btn1x5Clicked"/>
+            <!-- Row 2 -->
             <Button
                 x:Name="btn2x1"
                 Grid.Row="1" Grid.Column="0"
@@ -106,6 +108,7 @@
                 BorderColor="White" BorderWidth="3"
                 WidthRequest="75" HeightRequest="75"
                 Clicked="Btn2x5Clicked"/>
+            <!-- Row 3 -->
             <Button
                 x:Name="btn3x1"
                 Grid.Row="2" Grid.Column="0"
@@ -136,6 +139,7 @@
                 BorderColor="White" BorderWidth="3"
                 WidthRequest="75" HeightRequest="75"
                 Clicked="Btn3x5Clicked"/>
+            <!-- Row 4 -->
             <Button
                 x:Name="btn4x1"
                 Grid.Row="3" Grid.Column="0"

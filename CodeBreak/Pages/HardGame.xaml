@@ -41,306 +41,277 @@
             HorizontalOptions="Center"/>
 
         <Grid 
-            x:Name="table" RowDefinitions="100,100,100,100" ColumnDefinitions="100,100,100,100,100" 
-            HorizontalOptions="Center" 
-            Margin="0,20,0,0" Padding="270,10,300,10"
+            x:Name="table" RowDefinitions="75,75,75,75,75,75" ColumnDefinitions="75,75,75,75,75,75,75" 
+            HorizontalOptions="Center"
+            Margin="0,20,0,0" Padding="300,10,300,10"
             BackgroundColor="MidnightBlue" Opacity="1">
 
+            <!-- Row 1-->
             <Button
                 x:Name="btn1x1"
                 Grid.Row="0" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x1Clicked"/>
             <Button
                 x:Name="btn1x2"
                 Grid.Row="0" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x2Clicked"/>
             <Button
                 x:Name="btn1x3"
                 Grid.Row="0" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x3Clicked"/>
             <Button
                 x:Name="btn1x4"
                 Grid.Row="0" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x4Clicked"/>
             <Button
                 x:Name="btn1x5"
                 Grid.Row="0" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x5Clicked"/>
             <Button
                 x:Name="btn1x6"
                 Grid.Row="0" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn1x6Clicked"/>
+            <Button
+                x:Name="btn1x7"
+                Grid.Row="0" Grid.Column="6"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn1x7Clicked"/>
+            <!-- Row 2-->
             <Button
                 x:Name="btn2x1"
                 Grid.Row="1" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x1Clicked"/>
             <Button
                 x:Name="btn2x2"
                 Grid.Row="1" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x2Clicked"/>
             <Button
                 x:Name="btn2x3"
                 Grid.Row="1" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x3Clicked"/>
             <Button
                 x:Name="btn2x4"
                 Grid.Row="1" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x4Clicked"/>
             <Button
                 x:Name="btn2x5"
                 Grid.Row="1" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x5Clicked"/>
             <Button
                 x:Name="btn2x6"
                 Grid.Row="1" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn2x6Clicked"/>
+            <Button
+                x:Name="btn2x7"
+                Grid.Row="1" Grid.Column="6"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn2x7Clicked"/>
+            <!-- Row 3 -->
             <Button
                 x:Name="btn3x1"
                 Grid.Row="2" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x1Clicked"/>
             <Button
                 x:Name="btn3x2"
                 Grid.Row="2" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x2Clicked"/>
             <Button
                 x:Name="btn3x3"
                 Grid.Row="2" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x3Clicked"/>
             <Button
                 x:Name="btn3x4"
                 Grid.Row="2" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x4Clicked"/>
             <Button
                 x:Name="btn3x5"
                 Grid.Row="2" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x5Clicked"/>
             <Button
                 x:Name="btn3x6"
                 Grid.Row="2" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn3x6Clicked"/>
+            <Button
+                x:Name="btn3x7"
+                Grid.Row="2" Grid.Column="6"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn3x7Clicked"/>
+            <!-- Row 4 -->
             <Button
                 x:Name="btn4x1"
                 Grid.Row="3" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x1Clicked"/>
             <Button
                 x:Name="btn4x2"
                 Grid.Row="3" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x2Clicked"/>
             <Button
                 x:Name="btn4x3"
                 Grid.Row="3" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x3Clicked"/>
             <Button
                 x:Name="btn4x4"
                 Grid.Row="3" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x4Clicked"/>
             <Button
                 x:Name="btn4x5"
                 Grid.Row="3" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x5Clicked"/>
             <Button
                 x:Name="btn4x6"
                 Grid.Row="3" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn4x6Clicked"/>
+            <Button
+                x:Name="btn4x7"
+                Grid.Row="3" Grid.Column="6"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn4x7Clicked"/>
+            <!-- Row 5 -->
             <Button
                 x:Name="btn5x1"
                 Grid.Row="4" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x1Clicked"/>
             <Button
                 x:Name="btn5x2"
                 Grid.Row="4" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x2Clicked"/>
             <Button
                 x:Name="btn5x3"
                 Grid.Row="4" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x3Clicked"/>
             <Button
                 x:Name="btn5x4"
                 Grid.Row="4" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x4Clicked"/>
             <Button
                 x:Name="btn5x5"
                 Grid.Row="4" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x5Clicked"/>
             <Button
                 x:Name="btn5x6"
                 Grid.Row="4" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn5x6Clicked"/>
+            <Button
+                x:Name="btn5x7"
+                Grid.Row="4" Grid.Column="6"
+                BorderColor="White" BorderWidth="3"
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn5x7Clicked"/>
+            <!-- Row 6 -->
             <Button
                 x:Name="btn6x1"
                 Grid.Row="5" Grid.Column="0"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x1Clicked"/>
             <Button
                 x:Name="btn6x2"
                 Grid.Row="5" Grid.Column="1"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x2Clicked"/>
             <Button
                 x:Name="btn6x3"
                 Grid.Row="5" Grid.Column="2"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x3Clicked"/>
             <Button
                 x:Name="btn6x4"
                 Grid.Row="5" Grid.Column="3"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x4Clicked"/>
             <Button
                 x:Name="btn6x5"
                 Grid.Row="5" Grid.Column="4"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x5Clicked"/>
             <Button
                 x:Name="btn6x6"
                 Grid.Row="5" Grid.Column="5"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
+                WidthRequest="55" HeightRequest="55"
                 Clicked="Btn6x6Clicked"/>
             <Button
-                x:Name="btn7x1"
-                Grid.Row="6" Grid.Column="0"
+                x:Name="btn6x7"
+                Grid.Row="5" Grid.Column="6"
                 BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x1Clicked"/>
-            <Button
-                x:Name="btn7x2"
-                Grid.Row="6" Grid.Column="1"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x2Clicked"/>
-            <Button
-                x:Name="btn7x3"
-                Grid.Row="6" Grid.Column="2"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x3Clicked"/>
-            <Button
-                x:Name="btn7x4"
-                Grid.Row="6" Grid.Column="3"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x4Clicked"/>
-            <Button
-                x:Name="btn7x5"
-                Grid.Row="6" Grid.Column="4"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x5Clicked"/>
-            <Button
-                x:Name="btn7x6"
-                Grid.Row="6" Grid.Column="5"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn7x6Clicked"/>
-            <Button
-                x:Name="btn8x1"
-                Grid.Row="7" Grid.Column="0"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x1Clicked"/>
-            <Button
-                x:Name="btn8x2"
-                Grid.Row="7" Grid.Column="1"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x2Clicked"/>
-            <Button
-                x:Name="btn8x3"
-                Grid.Row="7" Grid.Column="2"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x3Clicked"/>
-            <Button
-                x:Name="btn8x4"
-                Grid.Row="7" Grid.Column="3"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x4Clicked"/>
-            <Button
-                x:Name="btn8x5"
-                Grid.Row="7" Grid.Column="4"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x5Clicked"/>
-            <Button
-                x:Name="btn8x6"
-                Grid.Row="7" Grid.Column="5"
-                BorderColor="White" BorderWidth="3"
-                WidthRequest="75" HeightRequest="75"
-                Clicked="Btn8x6Clicked"/>
+                WidthRequest="55" HeightRequest="55"
+                Clicked="Btn6x7Clicked"/>
+
         </Grid>
 
         <Button
             x:Name="btnSubmit"
             Text="Submit" TextColor="White"
             BackgroundColor="Black"
-            FontFamily="VCR_OSD_Mono" FontSize="25"
+            FontFamily="VCR_OSD_Mono" FontSize="40"
             WidthRequest="450" HeightRequest="80"
             Clicked="CheckPattern"/>
 
