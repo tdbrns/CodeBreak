@@ -170,9 +170,8 @@
 
         <Button
             x:Name="btnSubmit"
-            Text="Submit" TextColor="White"
-            BackgroundColor="Black"
-            FontFamily="VCR_OSD_Mono" FontSize="25"
+            Text="Submit"
+            FontFamily="VCR_OSD_Mono" FontSize="40"
             WidthRequest="450" HeightRequest="80"
             Clicked="CheckPattern"/>
 

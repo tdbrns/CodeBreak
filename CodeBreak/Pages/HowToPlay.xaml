@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CodeBreak.Pages.HowToPlay"
+             NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+
+            <GradientStop Color="Black" Offset="0.01" />
+            <GradientStop Color="DarkSlateBlue" Offset="0.4" />
+            <GradientStop Color="MidnightBlue" Offset="0.8" />
+
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <ScrollView>
+        <StackLayout Margin="200,50,200,0" HorizontalOptions="Center" Spacing="70">
+            <Label 
+                Text="How To Play" 
+                FontFamily="Abduction2002" FontSize="90"
+                HorizontalOptions="Center">
+
+                <Label.Shadow>
+                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
+                </Label.Shadow>
+
+            </Label>
+
+            <Label
+                x:Name="lblInfo"
+                FontFamily="VCR_OSD_Mono" FontSize="30"
+                HorizontalOptions="Center"/>
+
+            </StackLayout>
+        
+    </ScrollView>
+    
+    
+    
+</ContentPage>
