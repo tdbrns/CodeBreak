@@ -10,8 +10,8 @@ public partial class MainPage : ContentPage
         PlayAnimation1();
     }
 
-    // Set up the animation of the Main Menu text
-    public void InitializeAnimation1()
+    // Animates the Main Menu text
+    public async void PlayAnimation1()
     {
         lblCodeBreak.Opacity = 0;
         btnNewGame.Opacity = 0;
@@ -22,17 +22,11 @@ public partial class MainPage : ContentPage
         btnLeaderboards.IsEnabled = false;
         btnHowToPlay.IsEnabled = false;
         btnQuit.IsEnabled = false;
-    }
-
-    // Animates the Main Menu text
-    public async void PlayAnimation1()
-    {
-        InitializeAnimation1();
 
         await Task.Delay(1000);
 
         await lblCodeBreak.FadeTo(1, 1000);
-        await Task.Delay(150);
+        await Task.Delay(500);
         await btnNewGame.FadeTo(0.5, 150);
         await Task.WhenAll<bool>
             (
