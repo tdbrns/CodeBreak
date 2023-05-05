@@ -36,9 +36,10 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Padding="30" Spacing="20">
+    <VerticalStackLayout Padding="30" Spacing="20" Margin="0,80,0,0">
 
         <Label
+            x:Name="lblDifficulty"
             Text="Select Difficulty"
             FontFamily="Abduction2002" FontSize="60"
             HorizontalOptions="Center">
@@ -54,6 +55,7 @@
             <RadioButton
                 x:Name="rdoEasy"
                 Grid.Row="0"
+                TextColor="White"
                 FontSize="40" FontFamily="Abduction2002"
                 Content="Easy"
                 IsChecked="True"
@@ -68,6 +70,7 @@
             <RadioButton
                 x:Name="rdoNormal"
                 Grid.Row="1"
+                TextColor="White"
                 FontSize="40" FontFamily="Abduction2002"
                 Content="Normal"
                 HorizontalOptions="Start">
@@ -81,6 +84,7 @@
             <RadioButton
                 x:Name="rdoHard"
                 Grid.Row="2"
+                TextColor="White"
                 FontSize="40" FontFamily="Abduction2002"
                 Content="Hard"
                 HorizontalOptions="Start">
@@ -94,6 +98,7 @@
             <RadioButton
                 x:Name="rdoImpossible"
                 Grid.Row="3"
+                TextColor="White"
                 FontSize="40" FontFamily="Abduction2002"
                 Content="Impossible"
                 HorizontalOptions="Start">
@@ -107,6 +112,7 @@
         </Grid>
 
         <Button
+            x:Name="btnStart"
             Text="Start"
             FontFamily="Abduction2002" FontSize="30"
             WidthRequest="200"

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="CodeBreak.Pages.NameEntry"
+             x:Class="CodeBreak.Pages.NameAcknowledgement"
+             Title="NameAcknowledgement"
              NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Background>
@@ -36,13 +37,13 @@
         </Style>
     </ContentPage.Resources>
 
-    <VerticalStackLayout Padding="30" Spacing="20" Margin="0,50,0,0">
+    <VerticalStackLayout Margin="0,80,0,0">
 
-        <Label 
-            x:Name="lblTitle"
-            Text="Enter Your Name" 
+        <Label
+            x:Name="lblAcknowledgement"
+            Text="Hey"
             FontFamily="Abduction2002" FontSize="90"
-            HorizontalOptions="Center"
+            HorizontalOptions="Center" VerticalOptions="Center" 
             Margin="0,150,0,0">
 
             <Label.Shadow>
@@ -50,34 +51,25 @@
             </Label.Shadow>
 
         </Label>
-        <!-- A player's name can only be 22 characters long -->
-        <Entry 
-            x:Name="txtPlayerName" 
-            Placeholder="..." FontSize="25"
-            BackgroundColor="White" TextColor="Black"
-            HorizontalTextAlignment="Center" 
-            WidthRequest="500"
-            MaxLength="22"
-            Completed="ConfirmName" />
         <Label
-            x:Name="lblErrorMsg"
-            FontFamily="VCR_OSD_Mono" FontSize="25"
-            HorizontalOptions="Center"/>
-        <Button 
-            x:Name="btnConfirm"
-            Text="Confirm"
+            x:Name="lblPlayerName" Margin="0,20,0,0"
+            FontFamily="VCR_OSD_Mono" FontSize="50"
+            HorizontalOptions="Center" VerticalOptions="Center" />
+        <Button
+            x:Name="btnNext"
+            Text="Next"
             FontFamily="Abduction2002" FontSize="30"
             WidthRequest="200"
-            VerticalOptions="Center"
-            Margin="0,20,0,0" 
-            Clicked="ConfirmName">
+            HorizontalOptions="Center" VerticalOptions="Center"
+            Margin="0,20,0,0"
+            Clicked="NextPage">
 
             <Button.Shadow>
                 <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
             </Button.Shadow>
 
         </Button>
-
+        
     </VerticalStackLayout>
 
 </ContentPage>

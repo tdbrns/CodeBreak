@@ -1,34 +1,32 @@
 // Game logic for a 5x6 table
 
-using Microsoft.Maui.Layouts;
-
 namespace CodeBreak.Pages;
 
 public partial class NormalGame : ContentPage
 {
-    private DataSaving _save = new DataSaving();
-    private readonly int[] _columnArray1 = new int[5];
-    private readonly int[] _columnArray2 = new int[5];
-    private readonly int[] _columnArray3 = new int[5];
-    private readonly int[] _columnArray4 = new int[5];
-    private readonly int[] _columnArray5 = new int[5];
-    private readonly int[] _columnArray6 = new int[5];
-    private readonly int[] _correctIndexes = new int[6];
-    private readonly int[] _chosenIndexes = new int[6];
-    private readonly bool[] _disabledColumns = new bool[6];
-    private int _gameScore = 0;
-    private int _remainingTries = 3;
-    private bool _pauseTimer = false;
-    private int _timerValue = 60;
-    private int _viewTimeValue = 1000;
-
     static class Constants
     {
         public const int VIEWTIME_DECREMENT = 50;
-        public const int MIN_VIEWTIME = 50;
-        public const int NUM_COLUMNS = 6;
+        public const int MIN_VIEWTIME = 300;
         public const int NUM_ROWS = 5;
+        public const int NUM_COLUMNS = 6;
     }
+
+    private DataSaving _save = new DataSaving();
+    private readonly int[] _columnArray1 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray2 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray3 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray4 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray5 = new int[Constants.NUM_ROWS];
+    private readonly int[] _columnArray6 = new int[Constants.NUM_ROWS];
+    private readonly int[] _correctIndexes = new int[Constants.NUM_COLUMNS];
+    private readonly int[] _chosenIndexes = new int[Constants.NUM_COLUMNS];
+    private readonly bool[] _disabledColumns = new bool[Constants.NUM_COLUMNS];
+    private int _gameScore = 0;
+    private int _remainingTries = 1;
+    private bool _pauseTimer = false;
+    private int _timerValue = 60;
+    private int _viewTimeValue = 1100;
 
     public NormalGame()
     {
@@ -96,7 +94,7 @@ public partial class NormalGame : ContentPage
             _timerValue--;
         }
 
-        if (_timerValue == 0 || _remainingTries == 0)
+        if (_timerValue == 0)
         {
             lblTimer.Text = String.Empty;
             GameOver();
@@ -105,6 +103,9 @@ public partial class NormalGame : ContentPage
 
     public async void CreateNewPattern()
     {
+        btnSubmit.BackgroundColor = Color.Parse("#3B3B3B");
+        btnSubmit.TextColor = Color.Parse("Gray");
+
         // Pause the timer and reset all columns
         _pauseTimer = true;
         ErasePattern();
@@ -121,12 +122,11 @@ public partial class NormalGame : ContentPage
             _columnArray6[i] = 0;
         }
 
-        // Generate five random numbers between 1 and 4 that will each represent one index of each column.
+        // Generate six random numbers between 1 and 5 that will each represent one index of each column.
         Random rand = new Random();
         for (int i = 0; i < Constants.NUM_COLUMNS; i++)
-        {
             _correctIndexes[i] = rand.Next(1, 6);
-        }
+
 
         // The random values will dictate which elements in the column arrays will store a 1.
         // Every 1 in the column arrays represents a button that is a part of the correct pattern, and every 0 represents a button that is not
@@ -148,9 +148,10 @@ public partial class NormalGame : ContentPage
         // The time during which the correct pattern is shown will be decremented in CheckPattern by the VIEWTIME_DECREMENT
         // constant with each new pattern.
         await Task.Delay(_viewTimeValue);
-
         ErasePattern();
+
         EnableAllColumns();
+
         _pauseTimer = false;
         ProgressTimer();
     }
@@ -171,8 +172,7 @@ public partial class NormalGame : ContentPage
                 }
             }
 
-            // If the player's pattern is correct, they earn a point, but if it is incorrect, they lose a try. A new pattern will be created
-            // afterwards, regardless of whether or not the player is correct.
+            // If the player's pattern is correct, they earn a point and a new pattern is created, but if it is incorrect, they lose a try.
             if (patternIsCorrect == true)
             {
                 _gameScore += 1;
@@ -197,7 +197,7 @@ public partial class NormalGame : ContentPage
                 TriesAnimation();
                 IncorrectRed();
                 await Task.Delay(1000);
-                CreateNewPattern();
+                GameOver();
             }
         }
     }
@@ -238,71 +238,71 @@ public partial class NormalGame : ContentPage
     {
         _pauseTimer = true;
 
-        btn1x1.BackgroundColor = Color.Parse("Red");
-        btn2x1.BackgroundColor = Color.Parse("Red");
-        btn3x1.BackgroundColor = Color.Parse("Red");
-        btn4x1.BackgroundColor = Color.Parse("Red");
-        btn5x1.BackgroundColor = Color.Parse("Red");
-        btn1x2.BackgroundColor = Color.Parse("Red");
-        btn2x2.BackgroundColor = Color.Parse("Red");
-        btn3x2.BackgroundColor = Color.Parse("Red");
-        btn4x2.BackgroundColor = Color.Parse("Red");
-        btn5x2.BackgroundColor = Color.Parse("Red");
-        btn1x3.BackgroundColor = Color.Parse("Red");
-        btn2x3.BackgroundColor = Color.Parse("Red");
-        btn3x3.BackgroundColor = Color.Parse("Red");
-        btn4x3.BackgroundColor = Color.Parse("Red");
-        btn5x3.BackgroundColor = Color.Parse("Red");
-        btn1x4.BackgroundColor = Color.Parse("Red");
-        btn2x4.BackgroundColor = Color.Parse("Red");
-        btn3x4.BackgroundColor = Color.Parse("Red");
-        btn4x4.BackgroundColor = Color.Parse("Red");
-        btn5x4.BackgroundColor = Color.Parse("Red");
-        btn1x5.BackgroundColor = Color.Parse("Red");
-        btn2x5.BackgroundColor = Color.Parse("Red");
-        btn3x5.BackgroundColor = Color.Parse("Red");
-        btn4x5.BackgroundColor = Color.Parse("Red");
-        btn5x5.BackgroundColor = Color.Parse("Red");
-        btn1x6.BackgroundColor = Color.Parse("Red");
-        btn2x6.BackgroundColor = Color.Parse("Red");
-        btn3x6.BackgroundColor = Color.Parse("Red");
-        btn4x6.BackgroundColor = Color.Parse("Red");
-        btn5x6.BackgroundColor = Color.Parse("Red");
+        btn1x1.BackgroundColor = Color.Parse("Red"); btn1x1.BorderColor = Color.Parse("Red");
+        btn2x1.BackgroundColor = Color.Parse("Red"); btn2x1.BorderColor = Color.Parse("Red");
+        btn3x1.BackgroundColor = Color.Parse("Red"); btn3x1.BorderColor = Color.Parse("Red");
+        btn4x1.BackgroundColor = Color.Parse("Red"); btn4x1.BorderColor = Color.Parse("Red");
+        btn5x1.BackgroundColor = Color.Parse("Red"); btn5x1.BorderColor = Color.Parse("Red");
+        btn1x2.BackgroundColor = Color.Parse("Red"); btn1x2.BorderColor = Color.Parse("Red");
+        btn2x2.BackgroundColor = Color.Parse("Red"); btn2x2.BorderColor = Color.Parse("Red");
+        btn3x2.BackgroundColor = Color.Parse("Red"); btn3x2.BorderColor = Color.Parse("Red");
+        btn4x2.BackgroundColor = Color.Parse("Red"); btn4x2.BorderColor = Color.Parse("Red");
+        btn5x2.BackgroundColor = Color.Parse("Red"); btn5x2.BorderColor = Color.Parse("Red");
+        btn1x3.BackgroundColor = Color.Parse("Red"); btn1x3.BorderColor = Color.Parse("Red");
+        btn2x3.BackgroundColor = Color.Parse("Red"); btn2x3.BorderColor = Color.Parse("Red");
+        btn3x3.BackgroundColor = Color.Parse("Red"); btn3x3.BorderColor = Color.Parse("Red");
+        btn4x3.BackgroundColor = Color.Parse("Red"); btn4x3.BorderColor = Color.Parse("Red");
+        btn5x3.BackgroundColor = Color.Parse("Red"); btn5x3.BorderColor = Color.Parse("Red");
+        btn1x4.BackgroundColor = Color.Parse("Red"); btn1x4.BorderColor = Color.Parse("Red");
+        btn2x4.BackgroundColor = Color.Parse("Red"); btn2x4.BorderColor = Color.Parse("Red");
+        btn3x4.BackgroundColor = Color.Parse("Red"); btn3x4.BorderColor = Color.Parse("Red");
+        btn4x4.BackgroundColor = Color.Parse("Red"); btn4x4.BorderColor = Color.Parse("Red");
+        btn5x4.BackgroundColor = Color.Parse("Red"); btn5x4.BorderColor = Color.Parse("Red");
+        btn1x5.BackgroundColor = Color.Parse("Red"); btn1x5.BorderColor = Color.Parse("Red");
+        btn2x5.BackgroundColor = Color.Parse("Red"); btn2x5.BorderColor = Color.Parse("Red");
+        btn3x5.BackgroundColor = Color.Parse("Red"); btn3x5.BorderColor = Color.Parse("Red");
+        btn4x5.BackgroundColor = Color.Parse("Red"); btn4x5.BorderColor = Color.Parse("Red");
+        btn5x5.BackgroundColor = Color.Parse("Red"); btn5x5.BorderColor = Color.Parse("Red");
+        btn1x6.BackgroundColor = Color.Parse("Red"); btn1x6.BorderColor = Color.Parse("Red");
+        btn2x6.BackgroundColor = Color.Parse("Red"); btn2x6.BorderColor = Color.Parse("Red");
+        btn3x6.BackgroundColor = Color.Parse("Red"); btn3x6.BorderColor = Color.Parse("Red");
+        btn4x6.BackgroundColor = Color.Parse("Red"); btn4x6.BorderColor = Color.Parse("Red");
+        btn5x6.BackgroundColor = Color.Parse("Red"); btn5x6.BorderColor = Color.Parse("Red");
     }
     public void CorrectGreen()
     {
         _pauseTimer = true;
 
-        btn1x1.BackgroundColor = Color.Parse("Green");
-        btn2x1.BackgroundColor = Color.Parse("Green");
-        btn3x1.BackgroundColor = Color.Parse("Green");
-        btn4x1.BackgroundColor = Color.Parse("Green");
-        btn5x1.BackgroundColor = Color.Parse("Green");
-        btn1x2.BackgroundColor = Color.Parse("Green");
-        btn2x2.BackgroundColor = Color.Parse("Green");
-        btn3x2.BackgroundColor = Color.Parse("Green");
-        btn4x2.BackgroundColor = Color.Parse("Green");
-        btn5x2.BackgroundColor = Color.Parse("Green");
-        btn1x3.BackgroundColor = Color.Parse("Green");
-        btn2x3.BackgroundColor = Color.Parse("Green");
-        btn3x3.BackgroundColor = Color.Parse("Green");
-        btn4x3.BackgroundColor = Color.Parse("Green");
-        btn5x3.BackgroundColor = Color.Parse("Green");
-        btn1x4.BackgroundColor = Color.Parse("Green");
-        btn2x4.BackgroundColor = Color.Parse("Green");
-        btn3x4.BackgroundColor = Color.Parse("Green");
-        btn4x4.BackgroundColor = Color.Parse("Green");
-        btn5x4.BackgroundColor = Color.Parse("Green");
-        btn1x5.BackgroundColor = Color.Parse("Green");
-        btn2x5.BackgroundColor = Color.Parse("Green");
-        btn3x5.BackgroundColor = Color.Parse("Green");
-        btn4x5.BackgroundColor = Color.Parse("Green");
-        btn5x5.BackgroundColor = Color.Parse("Green");
-        btn1x6.BackgroundColor = Color.Parse("Green");
-        btn2x6.BackgroundColor = Color.Parse("Green");
-        btn3x6.BackgroundColor = Color.Parse("Green");
-        btn4x6.BackgroundColor = Color.Parse("Green");
-        btn5x6.BackgroundColor = Color.Parse("Green");
+        btn1x1.BackgroundColor = Color.Parse("Green"); btn1x1.BorderColor = Color.Parse("Green");
+        btn2x1.BackgroundColor = Color.Parse("Green"); btn2x1.BorderColor = Color.Parse("Green");
+        btn3x1.BackgroundColor = Color.Parse("Green"); btn3x1.BorderColor = Color.Parse("Green");
+        btn4x1.BackgroundColor = Color.Parse("Green"); btn4x1.BorderColor = Color.Parse("Green");
+        btn5x1.BackgroundColor = Color.Parse("Green"); btn5x1.BorderColor = Color.Parse("Green");
+        btn1x2.BackgroundColor = Color.Parse("Green"); btn1x2.BorderColor = Color.Parse("Green");
+        btn2x2.BackgroundColor = Color.Parse("Green"); btn2x2.BorderColor = Color.Parse("Green");
+        btn3x2.BackgroundColor = Color.Parse("Green"); btn3x2.BorderColor = Color.Parse("Green");
+        btn4x2.BackgroundColor = Color.Parse("Green"); btn4x2.BorderColor = Color.Parse("Green");
+        btn5x2.BackgroundColor = Color.Parse("Green"); btn5x2.BorderColor = Color.Parse("Green");
+        btn1x3.BackgroundColor = Color.Parse("Green"); btn1x3.BorderColor = Color.Parse("Green");
+        btn2x3.BackgroundColor = Color.Parse("Green"); btn2x3.BorderColor = Color.Parse("Green");
+        btn3x3.BackgroundColor = Color.Parse("Green"); btn3x3.BorderColor = Color.Parse("Green");
+        btn4x3.BackgroundColor = Color.Parse("Green"); btn4x3.BorderColor = Color.Parse("Green");
+        btn5x3.BackgroundColor = Color.Parse("Green"); btn5x3.BorderColor = Color.Parse("Green");
+        btn1x4.BackgroundColor = Color.Parse("Green"); btn1x4.BorderColor = Color.Parse("Green");
+        btn2x4.BackgroundColor = Color.Parse("Green"); btn2x4.BorderColor = Color.Parse("Green");
+        btn3x4.BackgroundColor = Color.Parse("Green"); btn3x4.BorderColor = Color.Parse("Green");
+        btn4x4.BackgroundColor = Color.Parse("Green"); btn4x4.BorderColor = Color.Parse("Green");
+        btn5x4.BackgroundColor = Color.Parse("Green"); btn5x4.BorderColor = Color.Parse("Green");
+        btn1x5.BackgroundColor = Color.Parse("Green"); btn1x5.BorderColor = Color.Parse("Green");
+        btn2x5.BackgroundColor = Color.Parse("Green"); btn2x5.BorderColor = Color.Parse("Green");
+        btn3x5.BackgroundColor = Color.Parse("Green"); btn3x5.BorderColor = Color.Parse("Green");
+        btn4x5.BackgroundColor = Color.Parse("Green"); btn4x5.BorderColor = Color.Parse("Green");
+        btn5x5.BackgroundColor = Color.Parse("Green"); btn5x5.BorderColor = Color.Parse("Green");
+        btn1x6.BackgroundColor = Color.Parse("Green"); btn1x6.BorderColor = Color.Parse("Green");
+        btn2x6.BackgroundColor = Color.Parse("Green"); btn2x6.BorderColor = Color.Parse("Green");
+        btn3x6.BackgroundColor = Color.Parse("Green"); btn3x6.BorderColor = Color.Parse("Green");
+        btn4x6.BackgroundColor = Color.Parse("Green"); btn4x6.BorderColor = Color.Parse("Green");
+        btn5x6.BackgroundColor = Color.Parse("Green"); btn5x6.BorderColor = Color.Parse("Green");
     }
     public void GameOver()
     {
@@ -556,56 +556,56 @@ public partial class NormalGame : ContentPage
 
     public void DisableColumn1()
     {
-        btn1x1.IsEnabled = false;
-        btn2x1.IsEnabled = false;
-        btn3x1.IsEnabled = false;
-        btn4x1.IsEnabled = false;
-        btn5x1.IsEnabled = false;
+        btn1x1.IsEnabled = false; btn1x1.BorderColor = Color.Parse("#3B3B3B");
+        btn2x1.IsEnabled = false; btn2x1.BorderColor = Color.Parse("#3B3B3B");
+        btn3x1.IsEnabled = false; btn3x1.BorderColor = Color.Parse("#3B3B3B");
+        btn4x1.IsEnabled = false; btn4x1.BorderColor = Color.Parse("#3B3B3B");
+        btn5x1.IsEnabled = false; btn5x1.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[0] = true;
     }
     public void DisableColumn2()
     {
-        btn1x2.IsEnabled = false;
-        btn2x2.IsEnabled = false;
-        btn3x2.IsEnabled = false;
-        btn4x2.IsEnabled = false;
-        btn5x2.IsEnabled = false;
+        btn1x2.IsEnabled = false; btn1x2.BorderColor = Color.Parse("#3B3B3B");
+        btn2x2.IsEnabled = false; btn2x2.BorderColor = Color.Parse("#3B3B3B");
+        btn3x2.IsEnabled = false; btn3x2.BorderColor = Color.Parse("#3B3B3B");
+        btn4x2.IsEnabled = false; btn4x2.BorderColor = Color.Parse("#3B3B3B");
+        btn5x2.IsEnabled = false; btn5x2.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[1] = true;
     }
     public void DisableColumn3()
     {
-        btn1x3.IsEnabled = false;
-        btn2x3.IsEnabled = false;
-        btn3x3.IsEnabled = false;
-        btn4x3.IsEnabled = false;
-        btn5x3.IsEnabled = false;
+        btn1x3.IsEnabled = false; btn1x3.BorderColor = Color.Parse("#3B3B3B");
+        btn2x3.IsEnabled = false; btn2x3.BorderColor = Color.Parse("#3B3B3B");
+        btn3x3.IsEnabled = false; btn3x3.BorderColor = Color.Parse("#3B3B3B");
+        btn4x3.IsEnabled = false; btn4x3.BorderColor = Color.Parse("#3B3B3B");
+        btn5x3.IsEnabled = false; btn5x3.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[2] = true;
     }
     public void DisableColumn4()
     {
-        btn1x4.IsEnabled = false;
-        btn2x4.IsEnabled = false;
-        btn3x4.IsEnabled = false;
-        btn4x4.IsEnabled = false;
-        btn5x5.IsEnabled = false;
+        btn1x4.IsEnabled = false; btn1x4.BorderColor = Color.Parse("#3B3B3B");
+        btn2x4.IsEnabled = false; btn2x4.BorderColor = Color.Parse("#3B3B3B");
+        btn3x4.IsEnabled = false; btn3x4.BorderColor = Color.Parse("#3B3B3B");
+        btn4x4.IsEnabled = false; btn4x4.BorderColor = Color.Parse("#3B3B3B");
+        btn5x4.IsEnabled = false; btn5x4.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[3] = true;
     }
     public void DisableColumn5()
     {
-        btn1x5.IsEnabled = false;
-        btn2x5.IsEnabled = false;
-        btn3x5.IsEnabled = false;
-        btn4x5.IsEnabled = false;
-        btn5x5.IsEnabled = false;
+        btn1x5.IsEnabled = false; btn1x5.BorderColor = Color.Parse("#3B3B3B");
+        btn2x5.IsEnabled = false; btn2x5.BorderColor = Color.Parse("#3B3B3B");
+        btn3x5.IsEnabled = false; btn3x5.BorderColor = Color.Parse("#3B3B3B");
+        btn4x5.IsEnabled = false; btn4x5.BorderColor = Color.Parse("#3B3B3B");
+        btn5x5.IsEnabled = false; btn5x5.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[4] = true;
     }
     public void DisableColumn6()
     {
-        btn1x6.IsEnabled = false;
-        btn2x6.IsEnabled = false;
-        btn3x6.IsEnabled = false;
-        btn4x6.IsEnabled = false;
-        btn5x6.IsEnabled = false;
+        btn1x6.IsEnabled = false; btn1x6.BorderColor = Color.Parse("#3B3B3B");
+        btn2x6.IsEnabled = false; btn2x6.BorderColor = Color.Parse("#3B3B3B");
+        btn3x6.IsEnabled = false; btn3x6.BorderColor = Color.Parse("#3B3B3B");
+        btn4x6.IsEnabled = false; btn4x6.BorderColor = Color.Parse("#3B3B3B");
+        btn5x6.IsEnabled = false; btn5x6.BorderColor = Color.Parse("#3B3B3B");
         _disabledColumns[5] = true;
     }
     public void EnableAllColumns()
@@ -613,36 +613,36 @@ public partial class NormalGame : ContentPage
         for (int i = 0; i < Constants.NUM_COLUMNS; i++)
             _disabledColumns[i] = false;
 
-        btn1x1.IsEnabled = true;
-        btn2x1.IsEnabled = true;
-        btn3x1.IsEnabled = true;
-        btn4x1.IsEnabled = true;
-        btn5x1.IsEnabled = true;
-        btn1x2.IsEnabled = true;
-        btn2x2.IsEnabled = true;
-        btn3x2.IsEnabled = true;
-        btn4x2.IsEnabled = true;
-        btn5x2.IsEnabled = true;
-        btn1x3.IsEnabled = true;
-        btn2x3.IsEnabled = true;
-        btn3x3.IsEnabled = true;
-        btn4x3.IsEnabled = true;
-        btn5x3.IsEnabled = true;
-        btn1x4.IsEnabled = true;
-        btn2x4.IsEnabled = true;
-        btn3x4.IsEnabled = true;
-        btn4x4.IsEnabled = true;
-        btn5x4.IsEnabled = true;
-        btn1x5.IsEnabled = true;
-        btn2x5.IsEnabled = true;
-        btn3x5.IsEnabled = true;
-        btn4x5.IsEnabled = true;
-        btn5x5.IsEnabled = true;
-        btn1x6.IsEnabled = true;
-        btn2x6.IsEnabled = true;
-        btn3x6.IsEnabled = true;
-        btn4x6.IsEnabled = true;
-        btn5x6.IsEnabled = true;
+        btn1x1.IsEnabled = true; btn1x1.BorderColor = Color.Parse("White");
+        btn2x1.IsEnabled = true; btn2x1.BorderColor = Color.Parse("White");
+        btn3x1.IsEnabled = true; btn3x1.BorderColor = Color.Parse("White");
+        btn4x1.IsEnabled = true; btn4x1.BorderColor = Color.Parse("White");
+        btn5x1.IsEnabled = true; btn5x1.BorderColor = Color.Parse("White");
+        btn1x2.IsEnabled = true; btn1x2.BorderColor = Color.Parse("White");
+        btn2x2.IsEnabled = true; btn2x2.BorderColor = Color.Parse("White");
+        btn3x2.IsEnabled = true; btn3x2.BorderColor = Color.Parse("White");
+        btn4x2.IsEnabled = true; btn4x2.BorderColor = Color.Parse("White");
+        btn5x2.IsEnabled = true; btn5x2.BorderColor = Color.Parse("White");
+        btn1x3.IsEnabled = true; btn1x3.BorderColor = Color.Parse("White");
+        btn2x3.IsEnabled = true; btn2x3.BorderColor = Color.Parse("White");
+        btn3x3.IsEnabled = true; btn3x3.BorderColor = Color.Parse("White");
+        btn4x3.IsEnabled = true; btn4x3.BorderColor = Color.Parse("White");
+        btn5x3.IsEnabled = true; btn5x3.BorderColor = Color.Parse("White");
+        btn1x4.IsEnabled = true; btn1x4.BorderColor = Color.Parse("White");
+        btn2x4.IsEnabled = true; btn2x4.BorderColor = Color.Parse("White");
+        btn3x4.IsEnabled = true; btn3x4.BorderColor = Color.Parse("White");
+        btn4x4.IsEnabled = true; btn4x4.BorderColor = Color.Parse("White");
+        btn5x4.IsEnabled = true; btn5x4.BorderColor = Color.Parse("White");
+        btn1x5.IsEnabled = true; btn1x5.BorderColor = Color.Parse("White");
+        btn2x5.IsEnabled = true; btn2x5.BorderColor = Color.Parse("White");
+        btn3x5.IsEnabled = true; btn3x5.BorderColor = Color.Parse("White");
+        btn4x5.IsEnabled = true; btn4x5.BorderColor = Color.Parse("White");
+        btn5x5.IsEnabled = true; btn5x5.BorderColor = Color.Parse("White");
+        btn1x6.IsEnabled = true; btn1x6.BorderColor = Color.Parse("White");
+        btn2x6.IsEnabled = true; btn2x6.BorderColor = Color.Parse("White");
+        btn3x6.IsEnabled = true; btn3x6.BorderColor = Color.Parse("White");
+        btn4x6.IsEnabled = true; btn4x6.BorderColor = Color.Parse("White");
+        btn5x6.IsEnabled = true; btn5x6.BorderColor = Color.Parse("White");
     }
 
     public void DisableAllColumns()
@@ -650,219 +650,381 @@ public partial class NormalGame : ContentPage
         for (int i = 0; i < Constants.NUM_COLUMNS; i++)
             _disabledColumns[i] = true;
 
-        btn1x1.IsEnabled = false;
-        btn2x1.IsEnabled = false;
-        btn3x1.IsEnabled = false;
-        btn4x1.IsEnabled = false;
-        btn5x1.IsEnabled = false;
-        btn1x2.IsEnabled = false;
-        btn2x2.IsEnabled = false;
-        btn3x2.IsEnabled = false;
-        btn4x2.IsEnabled = false;
-        btn5x2.IsEnabled = false;
-        btn1x3.IsEnabled = false;
-        btn2x3.IsEnabled = false;
-        btn3x3.IsEnabled = false;
-        btn4x3.IsEnabled = false;
-        btn5x3.IsEnabled = false;
-        btn1x4.IsEnabled = false;
-        btn2x4.IsEnabled = false;
-        btn3x4.IsEnabled = false;
-        btn4x4.IsEnabled = false;
-        btn5x4.IsEnabled = false;
-        btn1x5.IsEnabled = false;
-        btn2x5.IsEnabled = false;
-        btn3x5.IsEnabled = false;
-        btn4x5.IsEnabled = false;
-        btn5x5.IsEnabled = false;
-        btn1x6.IsEnabled = false;
-        btn2x6.IsEnabled = false;
-        btn3x6.IsEnabled = false;
-        btn4x6.IsEnabled = false;
-        btn5x6.IsEnabled = false;
+        btn1x1.IsEnabled = false; btn1x1.BorderColor = Color.Parse("#3B3B3B");
+        btn2x1.IsEnabled = false; btn2x1.BorderColor = Color.Parse("#3B3B3B");
+        btn3x1.IsEnabled = false; btn3x1.BorderColor = Color.Parse("#3B3B3B");
+        btn4x1.IsEnabled = false; btn4x1.BorderColor = Color.Parse("#3B3B3B");
+        btn5x1.IsEnabled = false; btn5x1.BorderColor = Color.Parse("#3B3B3B");
+        btn1x2.IsEnabled = false; btn1x2.BorderColor = Color.Parse("#3B3B3B");
+        btn2x2.IsEnabled = false; btn2x2.BorderColor = Color.Parse("#3B3B3B");
+        btn3x2.IsEnabled = false; btn3x2.BorderColor = Color.Parse("#3B3B3B");
+        btn4x2.IsEnabled = false; btn4x2.BorderColor = Color.Parse("#3B3B3B");
+        btn5x2.IsEnabled = false; btn5x2.BorderColor = Color.Parse("#3B3B3B");
+        btn1x3.IsEnabled = false; btn1x3.BorderColor = Color.Parse("#3B3B3B");
+        btn2x3.IsEnabled = false; btn2x3.BorderColor = Color.Parse("#3B3B3B");
+        btn3x3.IsEnabled = false; btn3x3.BorderColor = Color.Parse("#3B3B3B");
+        btn4x3.IsEnabled = false; btn4x3.BorderColor = Color.Parse("#3B3B3B");
+        btn5x3.IsEnabled = false; btn5x3.BorderColor = Color.Parse("#3B3B3B");
+        btn1x4.IsEnabled = false; btn1x4.BorderColor = Color.Parse("#3B3B3B");
+        btn2x4.IsEnabled = false; btn2x4.BorderColor = Color.Parse("#3B3B3B");
+        btn3x4.IsEnabled = false; btn3x4.BorderColor = Color.Parse("#3B3B3B");
+        btn4x4.IsEnabled = false; btn4x4.BorderColor = Color.Parse("#3B3B3B");
+        btn5x4.IsEnabled = false; btn5x4.BorderColor = Color.Parse("#3B3B3B");
+        btn1x5.IsEnabled = false; btn1x5.BorderColor = Color.Parse("#3B3B3B");
+        btn2x5.IsEnabled = false; btn2x5.BorderColor = Color.Parse("#3B3B3B");
+        btn3x5.IsEnabled = false; btn3x5.BorderColor = Color.Parse("#3B3B3B");
+        btn4x5.IsEnabled = false; btn4x5.BorderColor = Color.Parse("#3B3B3B");
+        btn5x5.IsEnabled = false; btn5x5.BorderColor = Color.Parse("#3B3B3B");
+        btn1x6.IsEnabled = false; btn1x6.BorderColor = Color.Parse("#3B3B3B");
+        btn2x6.IsEnabled = false; btn2x6.BorderColor = Color.Parse("#3B3B3B");
+        btn3x6.IsEnabled = false; btn3x6.BorderColor = Color.Parse("#3B3B3B");
+        btn4x6.IsEnabled = false; btn4x6.BorderColor = Color.Parse("#3B3B3B");
+        btn5x6.IsEnabled = false; btn5x6.BorderColor = Color.Parse("#3B3B3B");
     }
 
     // These ButtonClicked events will assign a value between 1 and 5 to an array (_chosenIndexes) that stores the indexes of the
     // buttons that they chose. _chosenIndexes will be compared to _correctIndexes in the CheckPattern method.
+
+    // Column 1
     public void Btn1x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 1;
         btn1x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 2;
         btn2x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x1Clicked(Object sender, EventArgs e)
     {
         _chosenIndexes[0] = 3;
         btn3x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 4;
         btn4x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x1Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[0] = 5;
         btn5x1.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn1();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
+
+    // Column 2
     public void Btn1x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 1;
         btn1x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 2;
         btn2x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 3;
         btn3x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 4;
         btn4x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x2Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[1] = 5;
         btn5x2.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn2();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
+
+    // Column 3
     public void Btn1x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 1;
         btn1x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 2;
         btn2x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 3;
         btn3x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 4;
         btn4x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x3Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[2] = 5;
         btn5x3.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn3();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
+
+    // Column 4
     public void Btn1x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 1;
         btn1x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x4Clicked(Object sender, EventArgs e)
     {
         _chosenIndexes[3] = 2;
         btn2x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 3;
         btn3x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 4;
         btn4x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x4Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[3] = 5;
         btn5x4.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn4();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
+
+    // Column 5
     public void Btn1x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 1;
         btn1x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 2;
         btn2x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 3;
         btn3x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 4;
         btn4x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x5Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[4] = 5;
         btn5x5.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn5();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
+
+    // Column 6
     public void Btn1x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 1;
         btn1x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn2x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 2;
         btn2x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn3x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 3;
         btn3x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn4x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 4;
         btn4x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
     public void Btn5x6Clicked(object sender, EventArgs e)
     {
         _chosenIndexes[5] = 5;
         btn5x6.BackgroundColor = Color.Parse("#FFD700");
         DisableColumn6();
+        if (_disabledColumns.Contains(false) == false)
+        {
+            btnSubmit.BackgroundColor = Color.Parse("White");
+            btnSubmit.TextColor = Color.Parse("MidnightBlue");
+        }
     }
 
     // The player's final score is saved into PlayerDatabase.

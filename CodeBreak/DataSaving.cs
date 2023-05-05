@@ -105,6 +105,7 @@ namespace CodeBreak
             if (_IsHighScore == true)
             {
                 hardRecord.Name = App.CurrentName;
+                hardRecord.Score = App.CurrentScore;
                 await PlayerDatabase.SaveHardPlayerAsync(hardRecord);
             }
 
