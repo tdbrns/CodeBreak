@@ -26,7 +26,7 @@ public partial class NormalGame : ContentPage
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
     private int _timerValue = 60;
-    private int _viewTimeValue = 1100;
+    private int _viewTimeValue = 1050;
 
     public NormalGame()
     {
