@@ -27,7 +27,7 @@ public partial class HardGame : ContentPage
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
     private int _timerValue = 60;
-    private int _viewTimeValue = 1050;
+    private int _viewTimeValue = 1100;
 
     public HardGame()
     {
