@@ -16,8 +16,9 @@ public partial class HowToPlay : ContentPage
 			"- When you think you have created the correct pattern, click the \"Submit\" button.\n\n" +
 			"- If your pattern is correct, you will earn a point!\n\n" +
 			"- If your pattern is incorrect, you will lose the game.\n\n" +
-			"- You will have 1 minute to successfully replicate as many patterns as you can!\n\n" +
-			"- As you correctly replicate more patterns, the time during which the correct pattern is visible will decrease. Remember to stay focused!\n\n";
+			"- You will have so much to successfully replicate as many patterns as you can. Be sure to watch the timer!\n\n" +
+			"- As you correctly replicate more patterns, the time during which the correct pattern is visible will decrease.\n\n" +
+			"- Remember to stay focused!\n\n";
 
 		HowToAnimation();
 	}
@@ -31,5 +32,10 @@ public partial class HowToPlay : ContentPage
 				lblInfo.FadeTo(0.5, 250)
 			);
 		await lblInfo.FadeTo(1, 250);
+	}
+
+	public async void ReturnToMainMenu(object sender, EventArgs e)
+	{
+		await Navigation.PopToRootAsync();
 	}
 }

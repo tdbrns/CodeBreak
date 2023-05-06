@@ -15,6 +15,7 @@ public partial class EasyLeaderboard : ContentPage
         var players = await PlayerDatabase.GetEasyPlayersByScore();
         ObservableCollection<EasyPlayers> easylist = new ObservableCollection<EasyPlayers>(players);
 
+        // Each player is assigned a rank according to their score.
         int rankCount = 1;
 
         foreach (var player in easylist)

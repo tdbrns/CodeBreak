@@ -1,8 +1,9 @@
-﻿// The purpose of this class is to store the name, score, and win total into PlayerDatabase.
-// Each player is assigned a rank according to their score.
+﻿// The purpose of this class is to store the names and scores of players into PlayerDatabase.
+
 // If the player is a new player, their score is accepted as a high score and their data will be saved into PlayerDatabase as a new record.
 
 // If the player is a returning player, their score will be compared to their previous high score. If their score is higher than their
+
 // previous high score, their record in PlayerDatabase will be updated with the new high score, but if their score is lower than their
 // previous high score, no new data will be saved.
 
@@ -35,10 +36,9 @@ namespace CodeBreak
 
                     break;
                 }
-
             }
 
-            if (_IsHighScore == true)
+            if (_IsHighScore == true && App.CurrentScore > 0)
             {
                 easyRecord.Name = App.CurrentName;
                 easyRecord.Score = App.CurrentScore;
@@ -67,10 +67,9 @@ namespace CodeBreak
                         _IsHighScore = false;
                     break;
                 }
-
             }
 
-            if (_IsHighScore == true)
+            if (_IsHighScore == true && App.CurrentScore > 0)
             {
                 normRecord.Name = App.CurrentName;
                 normRecord.Score = App.CurrentScore;
@@ -102,7 +101,7 @@ namespace CodeBreak
                 }
             }
 
-            if (_IsHighScore == true)
+            if (_IsHighScore == true && App.CurrentScore > 0)
             {
                 hardRecord.Name = App.CurrentName;
                 hardRecord.Score = App.CurrentScore;
@@ -134,7 +133,7 @@ namespace CodeBreak
                 }
             }
 
-            if (_IsHighScore == true)
+            if (_IsHighScore == true && App.CurrentScore > 0)
             {
                 impRecord.Name = App.CurrentName;
                 impRecord.Score = App.CurrentScore;

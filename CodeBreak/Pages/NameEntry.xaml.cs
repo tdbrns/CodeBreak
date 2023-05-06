@@ -36,7 +36,29 @@ public partial class NameEntry : ContentPage
         btnConfirm.IsEnabled = true;
     }
 
-    public async void ConfirmName(object sender, EventArgs e)
+    public async void ConfirmNameOnEnter(object sender, EventArgs e)
+    {
+        string playerName = ((Entry)sender).Text;
+
+        if (playerName == "" || string.IsNullOrWhiteSpace(playerName))
+        {
+            lblErrorMsg.Text = "Invalid name";
+            lblErrorMsg.IsVisible = true;
+        }
+        else if (playerName.Contains(" "))
+        {
+            lblErrorMsg.Text = "Name cannot contain spaces";
+            lblErrorMsg.IsVisible = true;
+        }
+        else
+        {
+            lblErrorMsg.IsVisible = false;
+            App.CurrentName = playerName;
+
+            await Navigation.PushAsync(new NameAcknowledgement());
+        }
+    }
+    public async void ConfirmNameOnClick(object sender, EventArgs e)
     {
         if (txtPlayerName.Text == "" || string.IsNullOrWhiteSpace(txtPlayerName.Text))
         {

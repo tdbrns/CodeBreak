@@ -29,7 +29,7 @@
     </ContentPage.Resources>
     
     <ScrollView>
-        <VerticalStackLayout Padding="30,0" Spacing="10">
+        <VerticalStackLayout Padding="30,0">
             <!-- Margin="left, top, right, bottom"-->
             <Label
                 x:Name="lblCodeBreak"
@@ -38,12 +38,20 @@
                 FontFamily="Abduction2002" FontSize="120"
                 Margin="0,200,0,0" Padding="1"
                 HorizontalOptions="Center"/>
+            <Label
+                x:Name="lblCredits"
+                Text="by Team Logic" TextColor="#FFD700"
+                BackgroundColor="MidnightBlue"
+                FontFamily="VCR_OSD_Mono" FontSize="25"
+                Padding="1" Margin="565,0,0,0"
+                HorizontalOptions="Center"/>
             <Button
                 x:Name="btnNewGame"
                 Text="New Game"
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="200" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
+                Margin="0,20,0,5"
                 Clicked="NewGame"/>
             <Button
                 x:Name="btnLeaderboards"
@@ -51,6 +59,7 @@
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="250" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
+                Margin="5"
                 Clicked="ShowLeaderboards"/>
             <Button
                 x:Name="btnHowToPlay"
@@ -58,6 +67,7 @@
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="250" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
+                Margin="5"
                 Clicked="ShowHowToPlay"/>
             <Button
                 x:Name="btnQuit"
@@ -65,9 +75,8 @@
                 FontFamily="Abduction2002" FontSize="25"
                 WidthRequest="120" HeightRequest="56"
                 VerticalOptions="End" HorizontalOptions="Center"
-                Clicked="QuitGame">
-
-            </Button>
+                Margin="5"
+                Clicked="QuitGame"/>
 
 
         </VerticalStackLayout>

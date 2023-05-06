@@ -6,6 +6,7 @@ public partial class NormalGame : ContentPage
 {
     static class Constants
     {
+        public const int INITIAL_TIME = 70;
         public const int VIEWTIME_DECREMENT = 50;
         public const int MIN_VIEWTIME = 300;
         public const int NUM_ROWS = 5;
@@ -25,7 +26,7 @@ public partial class NormalGame : ContentPage
     private int _gameScore = 0;
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
-    private int _timerValue = 60;
+    private int _timerValue = Constants.INITIAL_TIME;
     private int _viewTimeValue = 1050;
 
     public NormalGame()
@@ -39,7 +40,7 @@ public partial class NormalGame : ContentPage
 
         lblScore.Text = $"Score: {_gameScore}";
         lblTries.Text = $"Tries: {_remainingTries}";
-        lblTimer.Text = "60";
+        lblTimer.Text = $"{_timerValue}";
 
 
         HeaderAnimation();
@@ -111,7 +112,7 @@ public partial class NormalGame : ContentPage
         DisableAllColumns();
 
         // Give player a 1 second waiting period before revealing the first pattern
-        if (_timerValue == 60)
+        if (_timerValue == Constants.INITIAL_TIME)
             await Task.Delay(1000);
         _pauseTimer = true;
 
