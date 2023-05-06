@@ -7,13 +7,14 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
-        PlayAnimation1();
+        IntroAnimation();
     }
 
     // Animates the Main Menu text
-    public async void PlayAnimation1()
+    public async void IntroAnimation()
     {
         lblCodeBreak.Opacity = 0;
+        lblCredits.Opacity = 0;
         btnNewGame.Opacity = 0;
         btnLeaderboards.Opacity = 0;
         btnHowToPlay.Opacity = 0;
@@ -25,8 +26,13 @@ public partial class MainPage : ContentPage
 
         await Task.Delay(1000);
 
-        await lblCodeBreak.FadeTo(1, 1000);
+        await Task.WhenAll<bool>
+            (
+                lblCodeBreak.FadeTo(1, 100),
+                lblCredits.FadeTo(1, 1000)
+            );
         await Task.Delay(500);
+
         await btnNewGame.FadeTo(0.5, 150);
         await Task.WhenAll<bool>
             (

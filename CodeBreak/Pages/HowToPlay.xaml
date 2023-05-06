@@ -13,14 +13,37 @@
 
         </LinearGradientBrush>
     </ContentPage.Background>
+    
+    <ContentPage.Resources>
+        <Style TargetType="Button">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="Normal">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor" Value="MidnightBlue"/>
+                                <Setter Property="TextColor" Value="White"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="PointerOver">
+                            <VisualState.Setters>
+                                <Setter Property="BackgroundColor"  Value="White"/>
+                                <Setter Property="TextColor" Value="MidnightBlue"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
 
     <ScrollView>
-        <StackLayout Margin="200,50,200,0" HorizontalOptions="Center" Spacing="70">
+        <StackLayout Margin="200,50,200,0" HorizontalOptions="Center">
             <Label
                 x:Name="lblHowToPlay"
                 Text="How To Play" 
                 FontFamily="Abduction2002" FontSize="90"
-                HorizontalOptions="Center">
+                HorizontalOptions="Center" Margin="0,0,0,50">
 
                 <Label.Shadow>
                     <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
@@ -33,7 +56,16 @@
                 FontFamily="VCR_OSD_Mono" FontSize="30"
                 HorizontalOptions="Center"/>
 
-            </StackLayout>
+            <Button
+                x:Name="btnMainMenu"
+                Text="Main Menu"
+                BorderColor="Black" BorderWidth="3"
+                FontFamily="Abduction2002" FontSize="30"
+                WidthRequest="250" HeightRequest="80"
+                Margin="0,0,0,20"
+                Clicked="ReturnToMainMenu"/>
+
+        </StackLayout>
         
     </ScrollView>
     

@@ -16,6 +16,7 @@ public partial class ImpossibleLeaderboard : ContentPage
 
         ObservableCollection<ImpossiblePlayers> easylist = new ObservableCollection<ImpossiblePlayers>(players);
 
+        // Each player is assigned a rank according to their score.
         int rankCount = 1;
 
         foreach (var player in easylist)

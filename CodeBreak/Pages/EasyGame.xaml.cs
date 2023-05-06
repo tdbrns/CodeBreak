@@ -6,6 +6,7 @@ public partial class EasyGame : ContentPage
 {
     static class Constants
     {
+        public const int INITIAL_TIME = 60;
         public const int VIEWTIME_DECREMENT = 50;
         public const int MIN_VIEWTIME = 300;
         public const int NUM_ROWS = 4;
@@ -24,7 +25,7 @@ public partial class EasyGame : ContentPage
     private int _gameScore = 0;
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
-    private int _timerValue = 60;
+    private int _timerValue = Constants.INITIAL_TIME;
     private int _viewTimeValue = 1000;
 
     public EasyGame()
@@ -38,7 +39,7 @@ public partial class EasyGame : ContentPage
 
         lblScore.Text = $"Score: {_gameScore}";
         lblTries.Text = $"Tries: {_remainingTries}";
-        lblTimer.Text = "60";
+        lblTimer.Text = $"{_timerValue}";
 
         HeaderAnimation();
         CreateNewPattern();
@@ -109,7 +110,7 @@ public partial class EasyGame : ContentPage
         DisableAllColumns();
 
         // Give player a 1 second waiting period before revealing the first pattern
-        if (_timerValue == 60)
+        if (_timerValue == Constants.INITIAL_TIME)
             await Task.Delay(1000);
         _pauseTimer = true;
 

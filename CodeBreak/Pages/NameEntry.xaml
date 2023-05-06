@@ -58,7 +58,7 @@
             HorizontalTextAlignment="Center" 
             WidthRequest="500"
             MaxLength="22"
-            Completed="ConfirmName" />
+            Completed="ConfirmNameOnEnter" />
         <Label
             x:Name="lblErrorMsg"
             FontFamily="VCR_OSD_Mono" FontSize="25"
@@ -70,7 +70,7 @@
             WidthRequest="200"
             VerticalOptions="Center"
             Margin="0,20,0,0" 
-            Clicked="ConfirmName">
+            Clicked="ConfirmNameOnClick">
 
             <Button.Shadow>
                 <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
