@@ -28,7 +28,7 @@ public partial class ImpossibleGame : ContentPage
     private int _remainingTries = 1;
     private bool _pauseTimer = false;
     private int _timerValue = 60;
-    private int _viewTimeValue = 1000;
+    private int _viewTimeValue = 1100;
 
     public ImpossibleGame()
     {
@@ -105,9 +105,13 @@ public partial class ImpossibleGame : ContentPage
         btnSubmit.TextColor = Color.Parse("Gray");
 
         // Pause the timer and reset all columns
-        _pauseTimer = true;
         ErasePattern();
         DisableAllColumns();
+
+        // Give player a 1 second waiting period before revealing the first pattern
+        if (_timerValue == 60)
+            await Task.Delay(1000);
+        _pauseTimer = true;
 
         // Initialize the rows of each column array to 0.
         for (int i = 0; i < Constants.NUM_ROWS; i++)
@@ -192,9 +196,6 @@ public partial class ImpossibleGame : ContentPage
             {
                 _remainingTries -= 1;
                 lblTries.Text = $"Tries: {_remainingTries}";
-
-                if (_viewTimeValue >= Constants.MIN_VIEWTIME)
-                    _viewTimeValue -= Constants.VIEWTIME_DECREMENT;
 
                 TriesAnimation();
                 IncorrectRed();
