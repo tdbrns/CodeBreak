@@ -46,9 +46,7 @@
             HorizontalOptions="Center" VerticalOptions="Center" 
             Margin="0,150,0,0">
 
-            <Label.Shadow>
-                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
-            </Label.Shadow>
+
 
         </Label>
         <Label
@@ -64,9 +62,6 @@
             Margin="0,20,0,0"
             Clicked="NextPage">
 
-            <Button.Shadow>
-                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
-            </Button.Shadow>
 
         </Button>
         
