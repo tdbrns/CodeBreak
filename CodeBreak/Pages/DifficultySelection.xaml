@@ -44,9 +44,7 @@
             FontFamily="Abduction2002" FontSize="60"
             HorizontalOptions="Center">
 
-            <Label.Shadow>
-                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
-            </Label.Shadow>
+
 
         </Label>
 
@@ -61,9 +59,6 @@
                 IsChecked="True"
                 HorizontalOptions="Start">
 
-                <RadioButton.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
-                </RadioButton.Shadow>
 
             </RadioButton>
 
@@ -75,9 +70,7 @@
                 Content="Normal"
                 HorizontalOptions="Start">
 
-                <RadioButton.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
-                </RadioButton.Shadow>
+
 
             </RadioButton>
 
@@ -89,9 +82,7 @@
                 Content="Hard"
                 HorizontalOptions="Start">
 
-                <RadioButton.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
-                </RadioButton.Shadow>
+
 
             </RadioButton>
 
@@ -103,9 +94,7 @@
                 Content="Impossible"
                 HorizontalOptions="Start">
 
-                <RadioButton.Shadow>
-                    <Shadow Brush="Black" Offset="10,10" Opacity="0.8"/>
-                </RadioButton.Shadow>
+
 
             </RadioButton>
 
@@ -120,9 +109,6 @@
             Margin="0,20,0,0"
             Clicked="StartGame">
 
-            <Button.Shadow>
-                <Shadow Brush="Black" Offset="10,10" Opacity="0.8" />
-            </Button.Shadow>
 
         </Button>
 
