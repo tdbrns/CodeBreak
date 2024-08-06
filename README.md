@@ -3,3 +3,4 @@ Code Break is a time-based memory where the player must quickly memorize and rep
 ### Notes About Development
 - Currently, this application has only been tested to run on Windows 10 and Windows 11. 
 - The .NET Multi-platform Application UI workload for Visual Studio 2022 is required for editing code.
+- Windows *Developer Mode* must be enabled for debugging and running code.
